@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Zombs Royale - 100 Player 2D Real-Time Battle Royale</title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
-    <link rel="stylesheet" href="/asset/app.css?4844295" type="text/css">
+    <link rel="stylesheet" href="asset/app.css" type="text/css">
+    <link rel="icon" href="favicon.ico">
     <meta name="description" content="Play ZombsRoyale.io - 100 player 2D real-time massive multiplayer Battle Royale game in your browser, inspired by PUBG/Fortnite.">
     <script>
         window.factorem = {};
@@ -28,12 +29,23 @@
             if(args[1].includes('://zombsroyale.io/api/')){
                 args[1] = 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&amp;container=enterprise&rewriteMime=application%2Fjavascript/'+args[1];
             }
+            if(args[1][0] === '/'){
+                args[1] = args[1].slice(1);
+            }
             console.log(args[1]);
             return window.realXML.prototype.originalOpen.apply(this, args);
         };
         WebAssembly.instantiateStreaming = async function(...args){
             var response = await args[0];
             return WebAssembly.instantiate(await response.arrayBuffer());
+        }
+        window.realFetch = window.fetch;
+        window.fetch = function(...args){
+            console.log(args[0]);
+            if(args[0][0] === '/'){
+                args[0] = args[0].slice(1);
+            }
+            return window.realFetch(...args);
         }
     </script>
 </head>
@@ -60,8 +72,8 @@
         <div class="home-loading-help">
             <div class="help-box">
                 <span class="help-box-images">
-                    <span class="help-box-image help-box-image-left" style="background-image:url('/asset/image/help-one-left.png');"></span>
-                <span class="help-box-image help-box-image-right" style="background-image:url('/asset/image/help-one-right.png');"></span>
+                    <span class="help-box-image help-box-image-left" style="background-image:url('asset/image/help-one-left.png');"></span>
+                <span class="help-box-image help-box-image-right" style="background-image:url('asset/image/help-one-right.png');"></span>
                 </span>
                 <span class="help-box-label">
                     <p><strong>WASD</strong> or <strong>Arrow Keys</strong> to move</p>
@@ -70,8 +82,8 @@
             </div>
             <div class="help-box">
                 <span class="help-box-images">
-                    <span class="help-box-image help-box-image-left" style="background-image:url('/asset/image/help-two-left.png');"></span>
-                <span class="help-box-image help-box-image-right" style="background-image:url('/asset/image/help-two-right.png');"></span>
+                    <span class="help-box-image help-box-image-left" style="background-image:url('asset/image/help-two-left.png');"></span>
+                <span class="help-box-image help-box-image-right" style="background-image:url('asset/image/help-two-right.png');"></span>
                 </span>
                 <span class="help-box-label">
                     <p>Break shiny boxes to get loot</p>
@@ -79,8 +91,8 @@
             </div>
             <div class="help-box">
                 <span class="help-box-images">
-                    <span class="help-box-image help-box-image-left" style="background-image:url('/asset/image/help-three-left.png');"></span>
-                <span class="help-box-image help-box-image-right" style="background-image:url('/asset/image/help-three-right.png');"></span>
+                    <span class="help-box-image help-box-image-left" style="background-image:url('asset/image/help-three-left.png');"></span>
+                <span class="help-box-image help-box-image-right" style="background-image:url('asset/image/help-three-right.png');"></span>
                 </span>
                 <span class="help-box-label">
                     <p>Press <strong>E</strong> to open doors</p>
@@ -88,8 +100,8 @@
             </div>
             <div class="help-box">
                 <span class="help-box-images">
-                    <span class="help-box-image help-box-image-left" style="background-image:url('/asset/image/help-four-left.png');"></span>
-                <span class="help-box-image help-box-image-right" style="background-image:url('/asset/image/help-four-right.png');"></span>
+                    <span class="help-box-image help-box-image-left" style="background-image:url('asset/image/help-four-left.png');"></span>
+                <span class="help-box-image help-box-image-right" style="background-image:url('asset/image/help-four-right.png');"></span>
                 </span>
                 <span class="help-box-label">
                     <p>Press <strong>E</strong> to interact and loot chests</p>
@@ -97,14 +109,14 @@
             </div>
         </div>
     </div>
-    <script src="/asset/app.js"></script>
-    <script src="/asset/build/UnityLoader.js"></script>
+    <script src="asset/app.js"></script>
+    <script src="asset/build/UnityLoader.js"></script>
     <script>
         var game = new Game({
             stage: 'prod',
             endpoint: 'zombsroyale',
             userData: false,
-            buildJsonUrl: '/build/webgl',
+            buildJsonUrl: 'build/webgl',
         });
 
         game.init(function() {
