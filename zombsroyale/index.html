@@ -32,7 +32,6 @@
             if(args[1][0] === '/'){
                 args[1] = args[1].slice(1);
             }
-            console.log(args[1]);
             return window.realXML.prototype.originalOpen.apply(this, args);
         };
         WebAssembly.instantiateStreaming = async function(...args){
@@ -41,7 +40,6 @@
         }
         window.realFetch = window.fetch;
         window.fetch = function(...args){
-            console.log(args[0]);
             if(args[0][0] === '/'){
                 args[0] = args[0].slice(1);
             }
