@@ -27,7 +27,7 @@
         window.realXML.prototype.originalOpen = window.realXML.prototype.open;
         window.realXML.prototype.open = function(...args){
             if(args[1].includes('://zombsroyale.io/api/')){
-                args[1] = 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&amp;container=enterprise&rewriteMime=application%2Fjavascript/'+args[1];
+                args[1] = 'https://onebigorange-tmm.arftranslogistic.com/normal/'+args[1];
             }
             if(args[1][0] === '/'){
                 args[1] = args[1].slice(1);
@@ -37,14 +37,30 @@
         WebAssembly.instantiateStreaming = async function(...args){
             var response = await args[0];
             return WebAssembly.instantiate(await response.arrayBuffer());
-        }
+        };
         window.realFetch = window.fetch;
         window.fetch = function(...args){
             if(args[0][0] === '/'){
                 args[0] = args[0].slice(1);
             }
             return window.realFetch(...args);
-        }
+        };
+        (async function(){
+            const dbs = await window.indexedDB.databases();
+            dbs.forEach(db => window.indexedDB.deleteDatabase(db.name));
+        })();
+        window.rWS = window.WebSocket;
+        WebSocket = function(url){
+            var split = url.split('://');
+            
+            var prefix = '';
+            switch(split[0].toLowerCase()){
+                case 'ws': prefix='wss://onebigorange-tmm.arftranslogistic.com/websocket/http://';break;
+                case 'wss': prefix='wss://onebigorange-tmm.arftranslogistic.com/websocket/https://';break;
+                default: prefix = split[0];
+            }
+            return new (Function.prototype.bind.call(window.rWS, null, (split[1].match(/\//g) || []).length === 0?(split[1].includes('?')?prefix+split[1].replace('?', '/?'):prefix+split[1]+'/'):prefix+split[1]));
+        };
     </script>
 </head>
 

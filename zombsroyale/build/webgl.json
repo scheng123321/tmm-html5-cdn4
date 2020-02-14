@@ -1,0 +1,20 @@
+{
+    "companyName": "Yang Liu",
+    "productName": "Zombs Royale",
+    "productVersion": "2.5.3",
+    "dataUrl": "https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/build/webgl.data.unityweb",
+    "wasmCodeUrl": "https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/build/webgl.wasm.code.unityweb",
+    "wasmFrameworkUrl": "https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/build/webgl.wasm.framework.unityweb",
+    "asmCodeUrl": "https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/build/webgl.asm.code.unityweb",
+    "asmMemoryUrl": "https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/build/webgl.asm.memory.unityweb",
+    "asmFrameworkUrl": "https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/build/webgl.asm.framework.unityweb",
+    "TOTAL_MEMORY": 503316480,
+    "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+    "webglContextAttributes": { "preserveDrawingBuffer": false },
+    "splashScreenStyle": "Dark",
+    "backgroundColor": "#101010",
+    "cacheControl": { "default": "must-revalidate" },
+    "developmentBuild": false,
+    "multithreading": false,
+    "unityVersion": "2019.2.3f1"
+}
