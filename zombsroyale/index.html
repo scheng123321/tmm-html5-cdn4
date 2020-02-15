@@ -23,17 +23,19 @@
     </script>
     <script type="text/javascript" id="factorem" src="//cdm.cursecdn.com/js/zombsroyale/cdmfactorem_min.js?sec=home&misc=1580049193"></script>
     <script>
-        window.realXML = XMLHttpRequest;
-        window.realXML.prototype.originalOpen = window.realXML.prototype.open;
-        window.realXML.prototype.open = function(...args){
-            if(args[1].includes('://zombsroyale.io/api/')){
-                args[1] = 'https://onebigorange-tmm.arftranslogistic.com/normal/'+args[1];
-            }
-            if(args[1][0] === '/'){
-                args[1] = args[1].slice(1);
-            }
-            return window.realXML.prototype.originalOpen.apply(this, args);
-        };
+        window.ga = function(){};
+        (function() {
+            var origOpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function(...args) {
+                if(args[1].includes('://zombsroyale.io/api/')){
+                    args[1] = 'https://onebigorange-tmm.arftranslogistic.com/normal/'+args[1];
+                }
+                if(args[1][0] === '/'){
+                    args[1] = args[1].slice(1);
+                }
+                origOpen.apply(this, args);
+            };
+        })();
         WebAssembly.instantiateStreaming = async function(...args){
             var response = await args[0];
             return WebAssembly.instantiate(await response.arrayBuffer());
@@ -123,14 +125,14 @@
             </div>
         </div>
     </div>
-    <script src="asset/app.js"></script>
-    <script src="asset/build/UnityLoader.js"></script>
+    <script src="https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/app.js"></script>
+    <script src="https://onebigorange-tmm.arftranslogistic.com/normal/http://zombsroyale.io/asset/build/UnityLoader.js"></script>
     <script>
         var game = new Game({
             stage: 'prod',
             endpoint: 'zombsroyale',
             userData: false,
-            buildJsonUrl: 'build/webgl.json',
+            buildJsonUrl: 'build/webgl',
         });
 
         game.init(function() {
