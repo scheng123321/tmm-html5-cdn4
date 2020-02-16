@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script>
+
+// if(window == window.top){ nah bruh, not happening
+// 	window.location = window.location.protocol + "//diep.io";
+// 	throw new Error("Nah");
+// }
+
+var c = (window.location.hash || "#").slice(1);
+var d = c.split(";");
+window.localStorage["acu$" + d[0]] = d[1];
+
+window.onbeforeunload = function(){
+	delete window.localStorage["acu" + d[0]];
+}
+
+</script>
+</body>
+</html>
