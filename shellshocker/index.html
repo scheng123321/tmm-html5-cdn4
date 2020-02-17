@@ -25,11 +25,11 @@
         if(document.onpointerlockchange){
             window.realPointerChangeEvent = document.onpointerlockchange;
             document.onpointerlockchange = function(){
-                if(Date.now()-window.lastChange < 1000) return;
+                if(Date.now()-window.lastChange < 2000) return;
                 var state = document.pointerLockElement === null ? false : true;
                 window.realPointerChangeEvent();
                 if(state){
-                    setTimeout(function(){document.getElementById('canvas').requestPointerLock()}, 500);
+                    setTimeout(function(){document.getElementById('canvas').requestPointerLock()}, 1000);
                 }
                 window.lastChange = Date.now();
             };
