@@ -1,0 +1,295 @@
+{
+	"big": [
+		{
+			"imageExt": ".jpg",
+			"label": "SugarShock",
+			"link": "http://sugarshock.io",
+			"active": false,
+			"id": "big_jz1vl5q42"
+		},
+		{
+			"imageExt": ".jpg",
+			"link": "https://discordapp.com/invite/BlueWizard",
+			"active": false,
+			"label": "BW Discord",
+			"id": "big_k6ihrcy01"
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Sidearms Season one",
+			"link": "https://sidearms.io/?utm=ssbigsplash",
+			"active": true,
+			"id": "big_k6ig8jct2"
+		},
+		{
+			"imageExt": ".png",
+			"active": false,
+			"label": "Zombies beta",
+			"link": "https://zombies.io?utm=ssbigsplash",
+			"id": "big_k2kudfhx5"
+		},
+		{
+			"imageExt": ".jpg",
+			"active": false,
+			"label": "Sidearms Crazy",
+			"link": "http://iogames.space/SideArms?utm=ssnot",
+			"id": "big_k2npi5u37"
+		},
+		{
+			"imageExt": ".jpg",
+			"link": "https://fb.gg/play/379731406008346?utm=ssnot",
+			"label": "Sugar Shock Instant",
+			"id": "big_k2nqbxpr8",
+			"active": false
+		},
+		{
+			"imageExt": ".jpg",
+			"link": "https://www.surveymonkey.com/r/viralegg?utm=ssnot",
+			"label": "New Survey",
+			"id": "big_k2nuqh0m9",
+			"active": false
+		},
+		{
+			"imageExt": ".jpg",
+			"active": false,
+			"label": "Golden Chicken",
+			"linksToGoldenChicken": "1",
+			"id": "big_k2xstc9rb"
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Sugar Shock Web",
+			"active": false,
+			"link": "https://sugarshock.io?utm=ssbigsplash",
+			"id": "big_k36065nnc"
+		},
+		{
+			"imageExt": ".jpg",
+			"link": "https://chrome.google.com/webstore/detail/shell-shockers-unblocked/fankejbhjpifkfhekljkcegbmlhlmogn",
+			"label": "App",
+			"active": false,
+			"id": "big_k3f54b2we"
+		},
+		{
+			"imageExt": ".jpg",
+			"link": "https://diggerz.io?utm=ssbigsplash",
+			"label": "Diggerz",
+			"active": false,
+			"id": "big_k3gfhuqqf"
+		},
+		{
+			"active": false,
+			"imageExt": ".jpg",
+			"linksToNugget": "1",
+			"label": "Nugget Doubler",
+			"id": "big_k3gfqk81g"
+		},
+		{
+			"imageExt": ".png",
+			"label": "Eggwalker",
+			"linksToTaggedItems": "Eggwalker",
+			"id": "big_k3gimhx3h",
+			"active": false
+		},
+		{
+			"imageExt": ".jpg",
+			"link": "https://nuke.zone?utm=ssbigsplash",
+			"label": "Nuke Zone",
+			"id": "big_k3yqm8s9h",
+			"active": true
+		},
+		{
+			"active": false,
+			"label": "double egg",
+			"imageExt": ".jpg",
+			"link": "https://shellshock.io",
+			"id": "big_k5r4felqe"
+		},
+		{
+			"label": "Sugar1",
+			"imageExt": ".jpg",
+			"active": false,
+			"link": "https://fb.gg/play/sugarshockgame?utm_source=shell-shockers",
+			"id": "big_k44p3qj9j"
+		},
+		{
+			"imageExt": ".jpg",
+			"active": false,
+			"label": "zombies",
+			"link": "https://zombies.io?utm=ssbigsplash",
+			"id": "big_k66xkpnyg"
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Dungeon party",
+			"link": "https://www.kickstarter.com/projects/954412004/939110796",
+			"id": "big_k51tgwlal",
+			"active": false
+		},
+		{
+			"imageExt": ".png",
+			"label": "Raid Land",
+			"link": "https://raid.land?utm=ssbigsplash",
+			"id": "big_k69mtwm4i",
+			"active": true
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Bad Eggs",
+			"linksToItemId": "2095",
+			"active": false,
+			"id": "big_k58krttnj"
+		},
+		{
+			"label": "pong",
+			"link": "https://pong.lol?utm=ssbigsplash",
+			"imageExt": ".jpg",
+			"active": false,
+			"id": "big_k5lz0mq1k"
+		},
+		{
+			"label": "pong steam",
+			"imageExt": ".jpg",
+			"link": "https://store.steampowered.com/app/1233690/Hypergalactic_Psychic_Table_Tennis_3000/?utm=ssnot",
+			"active": false,
+			"id": "big_k6h1r7bfl"
+		}
+	],
+	"small": [
+		{
+			"label": "Killstreak",
+			"active": false,
+			"id": "small_jz1vn5ba0",
+			"link": "https://killstreak.tv",
+			"imageExt": ".jpg"
+		},
+		{
+			"label": "Bullet Town",
+			"imageExt": ".jpg",
+			"id": "small_jz1vn5ba1",
+			"active": false,
+			"link": "https://bullet.town"
+		},
+		{
+			"active": true,
+			"imageExt": ".jpg",
+			"label": "Shell League",
+			"id": "small_k3owdscx2",
+			"link": "https://www.shellleague.com/"
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Star Jack",
+			"link": "https://starjack.io",
+			"active": true,
+			"id": "small_jz1vn5ba3"
+		},
+		{
+			"imageExt": ".jpg",
+			"active": true,
+			"label": "Sidearms Season One",
+			"link": "https://sidearms.io?utm=sshousead",
+			"id": "small_k2kua4eo4"
+		},
+		{
+			"imageExt": ".png",
+			"label": "Zombies beta",
+			"link": "https://zombies.io?utm=sshousead",
+			"active": false,
+			"id": "small_k2kucvh15"
+		},
+		{
+			"active": false,
+			"imageExt": ".jpg",
+			"label": "merch 50 percent",
+			"link": "https://shell-shockers.myshopify.com/discount/turkey50",
+			"id": "small_k2m6qg106"
+		},
+		{
+			"imageExt": ".png",
+			"link": "https://fb.gg/play/379731406008346?utm=ssnot",
+			"label": "Sugar Shock Instant",
+			"active": false,
+			"id": "small_k2nq4ujg7"
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Golden Chicken",
+			"active": false,
+			"id": "small_k2vdpn778",
+			"linksToGoldenChicken": "1"
+		},
+		{
+			"active": false,
+			"label": "Raid Land preview",
+			"link": "https://raid.land?utm=sshousead",
+			"imageExt": ".jpg",
+			"id": "small_k2vdr3wc9"
+		},
+		{
+			"active": false,
+			"label": "Shell League s5",
+			"link": "https://www.shellleague.com/?utm=sshousead",
+			"imageExt": ".jpg",
+			"id": "small_k2w9r3hna"
+		},
+		{
+			"imageExt": ".png",
+			"label": "Raid Land open beta",
+			"link": "https://raid.land?utm=sshousead",
+			"id": "small_k6ct8rmib",
+			"active": true
+		},
+		{
+			"imageExt": ".png",
+			"link": "https://diggerz.io?utm=sshousead",
+			"active": false,
+			"label": "Diggerz",
+			"id": "small_k3gfklagc"
+		},
+		{
+			"imageExt": ".png",
+			"linksToTaggedItems": "Eggwalker",
+			"label": "Eggwalker",
+			"id": "small_k3gimxlwd",
+			"active": false
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Christmas",
+			"linksToTaggedItems": "Christmas",
+			"id": "small_k3kpke17e",
+			"active": false
+		},
+		{
+			"imageExt": ".jpg",
+			"link": "https://nuke.zone?utm=sshousead",
+			"label": "Nuke Zone",
+			"active": true,
+			"id": "small_k3yqm8s9f"
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "Dungeon Party preview",
+			"active": false,
+			"link": "http://www.forbiddengames.net/dungeon-party-coming-soon/?utm=sshousead",
+			"id": "small_k3rs3xa9g"
+		},
+		{
+			"imageExt": ".jpg",
+			"label": "double egg",
+			"active": false,
+			"link": "https://shellshock.io",
+			"id": "small_k44jwju3h"
+		},
+		{
+			"imageExt": ".png",
+			"active": true,
+			"label": "zombies",
+			"link": "https://zombies.io?utm=sshousead",
+			"id": "small_k6ct8rmii"
+		}
+	],
+	"houseAdPercentChance": 100,
+	"specialItemsTag": "EggyCash"
+}
