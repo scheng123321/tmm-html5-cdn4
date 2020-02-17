@@ -25,19 +25,17 @@
         if(document.onpointerlockchange){
             window.realPointerChangeEvent = document.onpointerlockchange;
             document.onpointerlockchange = function(){
+                if(Date.now()-window.lastChange < 1000) return;
                 var state = document.pointerLockElement === null ? false : true;
-                if(Date.now()-window.lastChange < 2000) return;
                 window.realPointerChangeEvent();
                 if(state){
-                    setTimeout(function(){document.getElementById('canvas').requestPointerLock()}, 1000);
+                    setTimeout(function(){document.getElementById('canvas').requestPointerLock()}, 500);
                 }
                 window.lastChange = Date.now();
             };
             clearInterval(cancel);
         }
     }, 500);
-    // window.realLogger = console.log;
-    // setInterval(()=>console.log=window.realLogger, 1000);
 </script>
 
 
