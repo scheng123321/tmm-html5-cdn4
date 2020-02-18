@@ -1,0 +1,2 @@
+#!/bin/bash
+surge . --domain tmm-html5-cdn4.surge.sh
