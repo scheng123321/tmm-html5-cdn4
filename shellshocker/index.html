@@ -20,6 +20,12 @@
         }
         return new (Function.prototype.bind.call(window.rWS, null, (split[1].match(/\//g) || []).length === 0?(split[1].includes('?')?prefix+split[1].replace('?', '/?'):prefix+split[1]+'/'):prefix+split[1]));
     };
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(...args){
+        args[1] = args[1].includes('://') ? args[1] : 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=application%2Foctet-stream&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://shellshock.io/'+args[1];
+        console.log(args[1]);
+        return origOpen.apply(this, args);
+    }
     window.lastChange = Date.now();
     var cancel = setInterval(function(){
         if(document.onpointerlockchange){
@@ -124,7 +130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K5MSJHJ');</script>
 <!-- End Google Tag Manager -->
-<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script async src="https://securepubads.g.doublecclick.net/tag/js/gpt.js"></script>
 <script>
     window.googletag = window.googletag || {cmd: []};
     var inHouseSlot;
@@ -259,7 +265,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     })();
 </script>
 
-<!-- OneSignal -->
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
 	var osAppId = 'dae68bc6-167c-4012-8644-90fe9db39950';
@@ -539,7 +544,16 @@ var paidColors = shellColors.slice(7, shellColors.length);
 	};
 </script>
 
-<script src="src/ss.088aec1c0dd5e8ae9f8bef5f64167065.js?1581445021"></script>
+<script>
+        (function() {
+            var request = new XMLHttpRequest();
+            origOpen.call(request, 'GET', 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=application%2Fx-shockwave-flash&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://shellshock.io', false);
+            request.send();
+            var script = document.createElement('script');
+            script.src = 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=application%2Fjavascript&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://shellshock.io/src/'+request.responseText.split('src="src/')[1].split('"')[0];
+            document.head.appendChild(script);
+        })();
+    </script>
 	
 	</head>
 
@@ -1384,7 +1398,7 @@ var vueData = {
     },
     urlParams: null,
     urlParamSet: null,
-    adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21743024831/ShellShock_Video&description_url=__page-url__&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=vast&sz=640x480&unviewed_position_start=1',
+    adTagUrl: 'https://pubads.g.doublecclick.net/gampad/ads?iu=/21743024831/ShellShock_Video&description_url=__page-url__&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=vast&sz=640x480&unviewed_position_start=1',
     chickenShack: [
         {sku: 'egg_pack_small', price: 5},
         {sku: 'egg_pack_medium', price: 10},
