@@ -23,7 +23,6 @@
     var origOpen = XMLHttpRequest.prototype.open;
     XMLHttpRequest.prototype.open = function(...args){
         args[1] = args[1].includes('://') ? args[1] : 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=application%2Foctet-stream&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://shellshock.io/'+args[1];
-        console.log(args[1]);
         return origOpen.apply(this, args);
     }
     window.lastChange = Date.now();
