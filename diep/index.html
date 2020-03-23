@@ -112,8 +112,8 @@ var split = url.split('://');
 
 var prefix = '';
 switch(split[0].toLowerCase()){
-case 'ws': prefix='wss://onebigorange-tmm.arftranslogistic.com/diepws/http://';break;
-case 'wss': prefix='wss://onebigorange-tmm.arftranslogistic.com/diepws/https://';break;
+case 'ws': prefix='wss://onebigorange-tmm.tbt.mx/diepws/http://';break;
+case 'wss': prefix='wss://onebigorange-tmm.tbt.mx/diepws/https://';break;
 default: prefix = split[0];
 }
 return new (Function.prototype.bind.call(window.rWS, null, (split[1].match(/\//g) || []).length === 0?(split[1].includes('?')?prefix+split[1].replace('?', '/?'):prefix+split[1]+'/'):prefix+split[1]));
@@ -130,7 +130,7 @@ return realFetch(['https://www-sites-opensocial.googleusercontent.com/gadgets/pr
 };
 (async function(window, document){
 	// var url = "build_d39e06efd69def169a03ae248da21df328386fe5" + (window.WebAssembly && window.localStorage["no_wasm"] !== "true" ? '.wasm.js' : '.js');
-	var url = 'https://onebigorange-tmm.arftranslogistic.com/removetoploc/https://static.diep.io/'+(await (await realFetch('https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=text%2Fplain&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://diep.io')).text()).split('var url = "')[1].split('"')[0] + (window.WebAssembly && window.localStorage["no_wasm"] !== "true" ? '.wasm.js' : '.js');
+	var url = 'https://onebigorange-tmm.tbt.mx/removetoploc/https://static.diep.io/'+(await (await realFetch('https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=text%2Fplain&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://diep.io')).text()).split('var url = "')[1].split('"')[0] + (window.WebAssembly && window.localStorage["no_wasm"] !== "true" ? '.wasm.js' : '.js');
 	var gameScript = document.createElement('script');
 	gameScript.async = true;
 	gameScript.type = 'text/javascript';
