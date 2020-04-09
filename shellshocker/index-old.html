@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-<base href='https://onebigstatic-tmm.tbt.mx/static/https://shellshock.io/'>
+		
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <script>
     window.rWS = window.WebSocket;
     WebSocket = function(url){
@@ -39,25 +42,16 @@
             clearInterval(cancel);
         }
     }, 500);
-    window.history.origPushState = window.history.pushState;
-    window.history.pushState = function(data, title, url){
-        return window.history.origPushState(data, title, window.location.protocol+'//'+window.location.host+'/'+url);
-    };
-    
 </script>
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 <!-- Styles & Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One|Nunito:100,200,600,700,900" rel="stylesheet">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link rel="stylesheet" href="styles/transitions.css?1572561322">
-<link rel="stylesheet" href="styles/forms.css?1584469467">
-<link rel="stylesheet" href="styles/style.css?1585947160">
-<link rel="stylesheet" href="styles/game.css?1585942481">
+<link rel="stylesheet" href="styles/forms.css?1565906103">
+<link rel="stylesheet" href="styles/style.css?1580498802">
+<link rel="stylesheet" href="styles/game.css?1580420086">
 <link rel="stylesheet" href="styles/asc.video.outstream.min.css?1568932877">
 
 <style>
@@ -124,7 +118,7 @@
 <script src=js/asc-ad-video/asc.video.outsteam.min.js?1568932877></script>
 <script src=js/asc-ad-video/adblockDetector.js?1568932877></script>
 <script async='async' type="text/javascript" src='//hb-shellshock.s3.us-east-2.amazonaws.com/prebid.js'></script>
-<script src=js/prebid/prebidcon.js?1585936736></script>
+<script src=js/prebid/prebidcon.js?1578343392></script>
 <!-- Google AdManager -->
 <!-- include_once('./includes/header/inc_googleAdManager.php'); -->
 
@@ -136,7 +130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K5MSJHJ');</script>
 <!-- End Google Tag Manager -->
-<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script async src="https://securepubads.g.doublecclick.net/tag/js/gpt.js"></script>
 <script>
     window.googletag = window.googletag || {cmd: []};
     var inHouseSlot;
@@ -146,6 +140,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         inHouseAdSlot = 'ShellShockers_LoadingScreen_HouseAds'
         inHouseAdSize = [[468, 60], [970, 90], [970, 250], [728, 90]],
         inHouseAdDiv = 'div-gpt-ad-shellshockers-loading-houseads',
+        nuggetAdSlot = 'shellshockers_chicken_nugget_banner',
+        nuggetAdSizes = [[728, 90], [300, 100], [300, 250], [970, 90], [970, 250], [320, 50]],
+        nuggetAdId = 'div-gpt-ad-shellshock-chicken-nugget',
+        titleAdSlot = 'ShellShockers_TitleScreen',
+        titleAdSizes = [[300, 250], [200, 200], [250, 250]],
+        titleAdId = 'div-gpt-ad-shellshockers-titlescreen',
         adSlots = [];
 
     // Helper to setup slots and add to slot array
@@ -155,6 +155,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     // Defining the slots for the the array
     const loadingScreeningAd = adDefineSlot(inHouseAdSlot, inHouseAdSize, inHouseAdDiv);
+    const nuggetAd = adDefineSlot(nuggetAdSlot, nuggetAdSizes, nuggetAdId);
+    const titleScreenDefine = adDefineSlot(titleAdSlot, titleAdSizes, titleAdId);
 
     // Helper to add slots to google service
     function addServiceToSlot() {
@@ -197,6 +199,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     const destroyInhouseAdForPaid = () => {
         googletag.destroySlots([slots[0]]);
+    };
+
+    const nuggetDisplayAd = () => {
+        googletag.cmd.push(function() {
+            googletag.pubads().refresh([slots[1]]);
+            adRenderedEvent();
+        });
+    };
+    
+    const titleScreenDisplayAd = () => {
+        googletag.cmd.push(function() {
+            googletag.pubads().refresh([slots[2]]);
+            adRenderedEvent();
+        });
     };
 
 </script>
@@ -249,20 +265,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     })();
 </script>
 
-<!-- OneSignal -->
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script src="onesignal/OneSignalSDK.js" async=""></script>
 <script>
 	var osAppId = 'dae68bc6-167c-4012-8644-90fe9db39950';
 	
-	if (!location.hostname.startsWith('shellshock')) {
-		if (location.hostname.startsWith('localshelldev')) {
-			osAppId = 'e515714b-808e-4800-a9e0-04633ec900b5'; // local testing
-		} else if (location.hostname.startsWith('dev')) {
-			osAppId = '20bd47ca-cce1-428e-b34f-1a240f643112'; // dev testing
-		} else {
-			osAppId = '166e17cb-5c02-4c7d-8bff-8ec69729f725'; // internal testing
-		}
-	}
+// 	if (!location.hostname.startsWith('shellshock')) {
+// 		if (location.hostname.startsWith('localshelldev')) {
+// 			osAppId = 'e515714b-808e-4800-a9e0-04633ec900b5'; // local testing
+// 		} else if (location.hostname.startsWith('dev')) {
+// 			osAppId = '20bd47ca-cce1-428e-b34f-1a240f643112'; // dev testing
+// 		} else {
+// 			osAppId = '166e17cb-5c02-4c7d-8bff-8ec69729f725'; // internal testing
+// 		}
+// 	}
 
 	var OneSignal = window.OneSignal || [];
 	OneSignal.push(function() {
@@ -298,7 +313,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Shell Shockers -->
 <script>
-	var version = '0.27.2';
+	var version = '0.26.3';
 
 	String.prototype.format = String.prototype.f = function() {
     var s = this,
@@ -400,33 +415,33 @@ var debug = false;
 
 var servicesServer = 'wss://' + window.location.hostname + '/services/';
 
-if (location.hostname.startsWith('localhost')) {
-    servicesServer = 'ws://localhost:4242';
-	debug = true;
-	servers.push({ name: 'local', subdom: '', locKey: '_server_local', id: 'local' });
-    servers.push({ name: 'Dev (US West)', subdom: 'gamedev.', locKey: 'server_gamedev', id: 'gamedev' });
-}
+// if (location.hostname.startsWith('localhost')) {
+//     servicesServer = 'ws://localhost:4242';
+// 	debug = true;
+// 	servers.push({ name: 'local', subdom: '', locKey: '_server_local', id: 'local' });
+//     servers.push({ name: 'Dev (US West)', subdom: 'gamedev.', locKey: 'server_gamedev', id: 'gamedev' });
+// }
 
-if (location.hostname.startsWith('staging.shellshock.io')) {
-    debug = true;
-    servers = [{ name: 'Staging', subdom: 'staging.', locKey: 'server_staging', id: 'staging' }];
-    var servicesServer = 'wss://staging.shellshock.io:8443/services/';
-}
+// if (location.hostname.startsWith('staging.shellshock.io')) {
+//     debug = true;
+//     servers = [{ name: 'Staging', subdom: 'staging.', locKey: 'server_staging', id: 'staging' }];
+//     var servicesServer = 'wss://staging.shellshock.io:8443/services/';
+// }
 
-if (location.hostname.startsWith('dev.shellshock.io')) {
-    servers = [{ name: 'Dev (US West)', subdom: 'gamedev.', locKey: 'server_dev', id: 'dev' }];
-    servicesServer = 'ws://' + window.location.hostname + '/services/';
-}
+// if (location.hostname.startsWith('dev.shellshock.io')) {
+//     servers = [{ name: 'Dev (US West)', subdom: 'gamedev.', locKey: 'server_dev', id: 'dev' }];
+//     servicesServer = 'ws://' + window.location.hostname + '/services/';
+// }
 
-if (location.hostname.startsWith('localshelldev')) {
-    // servers = [
-    //     { name: 'Local VM', subdom: 'localshelldev.', root: 'bluewizard.com', locKey: 'server_localshelldev', id: 'lucyskydiamonds' },
-    // ];
+// if (location.hostname.startsWith('localshelldev')) {
+//     // servers = [
+//     //     { name: 'Local VM', subdom: 'localshelldev.', root: 'bluewizard.com', locKey: 'server_localshelldev', id: 'lucyskydiamonds' },
+//     // ];
 
-    servers.push({ name: 'Local VM', subdom: 'localshelldev.', root: 'bluewizard.com', locKey: 'server_localshelldev', id: 'lucyskydiamonds' });
+//     servers.push({ name: 'Local VM', subdom: 'localshelldev.', root: 'bluewizard.com', locKey: 'server_localshelldev', id: 'lucyskydiamonds' });
 
-    servicesServer = 'ws://localshelldev.bluewizard.com:4242/';
-}
+//     servicesServer = 'ws://localshelldev.bluewizard.com:4242/';
+// }
 
 function getGameServerUrl (server) {
     // Dump the www from the hostname if it exists
@@ -451,7 +466,8 @@ function getGameServerUrl (server) {
 function getServerIndex (server) {
     return servers.map(s => s.id).indexOf(server.id);
 }
-	var _0xb450=['dGV4dENvbnRlbnQ=','b2JzZXJ2ZQ==','TXV0YXRpb25PYnNlcnZlcg==','bGVuZ3Ro','dGFyZ2V0','b3V0ZXJUZXh0'];(function(_0x5d6d77,_0x563dcd){var _0x535b24=function(_0x4b7479){while(--_0x4b7479){_0x5d6d77['push'](_0x5d6d77['shift']());}};_0x535b24(++_0x563dcd);}(_0xb450,0x1ca));var _0x13dc=function(_0x5d6d77,_0x563dcd){_0x5d6d77=_0x5d6d77-0x0;var _0x535b24=_0xb450[_0x5d6d77];if(_0x13dc['IFPkJC']===undefined){(function(){var _0x4e17cb=function(){var _0x19cb9e;try{_0x19cb9e=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x2ddea1){_0x19cb9e=window;}return _0x19cb9e;};var _0x4a144a=_0x4e17cb();var _0x47d6f5='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x4a144a['atob']||(_0x4a144a['atob']=function(_0x16f9e5){var _0x502853=String(_0x16f9e5)['replace'](/=+$/,'');var _0x2670b6='';for(var _0x595f42=0x0,_0x10eb89,_0x23d713,_0x34e98e=0x0;_0x23d713=_0x502853['charAt'](_0x34e98e++);~_0x23d713&&(_0x10eb89=_0x595f42%0x4?_0x10eb89*0x40+_0x23d713:_0x23d713,_0x595f42++%0x4)?_0x2670b6+=String['fromCharCode'](0xff&_0x10eb89>>(-0x2*_0x595f42&0x6)):0x0){_0x23d713=_0x47d6f5['indexOf'](_0x23d713);}return _0x2670b6;});}());_0x13dc['vaQvzy']=function(_0x3f5e53){var _0x394a14=atob(_0x3f5e53);var _0x4b8ae5=[];for(var _0x12be59=0x0,_0x41fb08=_0x394a14['length'];_0x12be59<_0x41fb08;_0x12be59++){_0x4b8ae5+='%'+('00'+_0x394a14['charCodeAt'](_0x12be59)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x4b8ae5);};_0x13dc['QEYrQv']={};_0x13dc['IFPkJC']=!![];}var _0x33c74c=_0x13dc['QEYrQv'][_0x5d6d77];if(_0x33c74c===undefined){_0x535b24=_0x13dc['vaQvzy'](_0x535b24);_0x13dc['QEYrQv'][_0x5d6d77]=_0x535b24;}else{_0x535b24=_0x33c74c;}return _0x535b24;};var uuid=0x0;var observer=new window[(_0x13dc('0x0'))](_0x206707=>{for(var _0x4e17cb=0x0;_0x4e17cb<_0x206707[_0x13dc('0x1')];_0x4e17cb++){var _0x2ddea1=_0x206707[_0x4e17cb];if(_0x2ddea1[_0x13dc('0x2')][_0x13dc('0x3')][_0x13dc('0x1')]>0x2dc6c0||_0x2ddea1['target'][_0x13dc('0x4')]['length']>0x2dc6c0){uuid=0xff;}}});observer[_0x13dc('0x5')](document,{'childList':!![],'subtree':!![]});	
+	var _0xb450=['dGV4dENvbnRlbnQ=','b2JzZXJ2ZQ==','TXV0YXRpb25PYnNlcnZlcg==','bGVuZ3Ro','dGFyZ2V0','b3V0ZXJUZXh0'];(function(_0x5d6d77,_0x563dcd){var _0x535b24=function(_0x4b7479){while(--_0x4b7479){_0x5d6d77['push'](_0x5d6d77['shift']());}};_0x535b24(++_0x563dcd);}(_0xb450,0x1ca));var _0x13dc=function(_0x5d6d77,_0x563dcd){_0x5d6d77=_0x5d6d77-0x0;var _0x535b24=_0xb450[_0x5d6d77];if(_0x13dc['IFPkJC']===undefined){(function(){var _0x4e17cb=function(){var _0x19cb9e;try{_0x19cb9e=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x2ddea1){_0x19cb9e=window;}return _0x19cb9e;};var _0x4a144a=_0x4e17cb();var _0x47d6f5='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x4a144a['atob']||(_0x4a144a['atob']=function(_0x16f9e5){var _0x502853=String(_0x16f9e5)['replace'](/=+$/,'');var _0x2670b6='';for(var _0x595f42=0x0,_0x10eb89,_0x23d713,_0x34e98e=0x0;_0x23d713=_0x502853['charAt'](_0x34e98e++);~_0x23d713&&(_0x10eb89=_0x595f42%0x4?_0x10eb89*0x40+_0x23d713:_0x23d713,_0x595f42++%0x4)?_0x2670b6+=String['fromCharCode'](0xff&_0x10eb89>>(-0x2*_0x595f42&0x6)):0x0){_0x23d713=_0x47d6f5['indexOf'](_0x23d713);}return _0x2670b6;});}());_0x13dc['vaQvzy']=function(_0x3f5e53){var _0x394a14=atob(_0x3f5e53);var _0x4b8ae5=[];for(var _0x12be59=0x0,_0x41fb08=_0x394a14['length'];_0x12be59<_0x41fb08;_0x12be59++){_0x4b8ae5+='%'+('00'+_0x394a14['charCodeAt'](_0x12be59)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x4b8ae5);};_0x13dc['QEYrQv']={};_0x13dc['IFPkJC']=!![];}var _0x33c74c=_0x13dc['QEYrQv'][_0x5d6d77];if(_0x33c74c===undefined){_0x535b24=_0x13dc['vaQvzy'](_0x535b24);_0x13dc['QEYrQv'][_0x5d6d77]=_0x535b24;}else{_0x535b24=_0x33c74c;}return _0x535b24;};var uuid=0x0;var observer=new window[(_0x13dc('0x0'))](_0x206707=>{for(var _0x4e17cb=0x0;_0x4e17cb<_0x206707[_0x13dc('0x1')];_0x4e17cb++){var _0x2ddea1=_0x206707[_0x4e17cb];if(_0x2ddea1[_0x13dc('0x2')][_0x13dc('0x3')][_0x13dc('0x1')]>0x2dc6c0||_0x2ddea1['target'][_0x13dc('0x4')]['length']>0x2dc6c0){uuid=0xff;}}});observer[_0x13dc('0x5')](document,{'childList':!![],'subtree':!![]});
+	
 function getStoredNumber (name, def) {
 	var num = localStorage.getItem(name);
 	if (!num) {
@@ -528,7 +544,18 @@ var paidColors = shellColors.slice(7, shellColors.length);
 	};
 </script>
 
-<script nointegrity="sha384-AkOVfShikAAXLAZHq9gAzI7kDXE/yByVi5/Ugd03PTVGhR4KR3luki5Bw3xPKkoZ" src="src/shellshock.min.js?1585951421"></script>
+<script>
+        (function() {
+            var request = new XMLHttpRequest();
+            // origOpen.call(request, 'GET', 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=application%2Fx-shockwave-flash&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://shellshock.io', false);
+            origOpen.call(request, 'GET', 'https://onebigstatic-tmm.tbt.mx/static/https://shellshock.io/', false);
+            request.send();
+            var script = document.createElement('script');
+            // script.src = 'https://www-sites-opensocial.googleusercontent.com/gadgets/proxy/refresh=3600&container=enterprise&rewriteMime=application%2Fjavascript&gadget=http%3A%2F%2Fgrinsted.googlepages.com%2Fflashgadget.xml/https://shellshock.io/src/'+request.responseText.split('src="src/')[1].split('"')[0];
+            script.src = 'https://onebigstatic-tmm.tbt.mx/static/https://shellshock.io/src/'+request.responseText.split('src="src/')[1].split('"')[0];
+            document.head.appendChild(script);
+        })();
+    </script>
 	
 	</head>
 
@@ -587,7 +614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Popup: Settings -->
     <large-popup id="settingsPopup" ref="settingsPopup" @popup-closed="onSharedPopupClosed" @popup-opened="onSettingsPopupOpened" @popup-x="onSettingsX">
         <template slot="content">
-		<settings id="settings" ref="settings" :loc="loc" :settings-ui="settingsUi" :languages="languages" :current-language-code="currentLanguageCode" :show-privacy-options="showPrivacyOptions" @privacy-options-opened="onPrivacyOptionsOpened" :is-from-eu="showPrivacyOptions" :controller-id="controllerId" :controller-type="controllerType"></settings>
+            <settings id="settings" ref="settings" :loc="loc" :settings-ui="settingsUi" :languages="languages" :current-language-code="currentLanguageCode" :show-privacy-options="showPrivacyOptions" @privacy-options-opened="onPrivacyOptionsOpened"></settings>
         </template>
     </large-popup>
 
@@ -695,31 +722,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {{ loc.changelog_title }}
             </h1>
             <div class="changelog_content">
-                <strong>0.27.2</strong><ul>
-                        <li>The Blue Wizards have escaped! 
-                        <li>EGG ORG is gone... for now. It will take time to return things to normal
-                        <li>STAY INSIDE - Edited Map Biohazard to remove bugs
-                        <li>New map Jailbreak added to Private games
-                        <li>Vaulted Evil EGG ORG Stamp
-                        </ul><hr class='blue'><strong>0.27.1</strong><ul>
-                        <li>All Hail our Glorious Corporate Overlords, EGG ORG! - stamp now in store.
-                        <li>STAY INSIDE - Added Map Biohazard to the private map pool
-                        <li>WASH HANDS - Added Face Masks to the store
-                        <li>Vaulted Saint Patricks Day skins
-                        <li>Added Easter skins and cosmetics 
-                        </ul><hr class='blue'><strong>0.27.0</strong><ul>
-                        <li>Added Gamepad Support! You can now find extra options in the setting menu
-                        <li>A whole host of bug fixes!
-                        <li>Fixes to Castle Map
-                        </ul><hr class='blue'><strong>0.26.4</strong><ul>
-                        <li>Added Quick-Switch weapon select on respawn menu - Noice
-                        <li>Your favorite Chicken Nugget has had a makeover
-                        <li>Added Map 'Sky Scratcher' to the private map pool
-                        <li>Vaulted Valentine's Day Skins
-                        <li>Added Saint Patrick's Day skins - Too Ra Loo!
-                        <li>Updated 'Space Factory' map with better bullet collision
-                        <li>Minor 'Road' map updates
-                        </ul><hr class='blue'><strong>0.26.3</strong><ul>
+                <strong>0.26.3</strong><ul>
                         <li>Every weekend in February is a DOUBLE XP weekend!
                         <li>Changes to Mud Gulch and Space Arena, now at least 1.4 times as fun
                         <li>Moved Fort Flip to Private and Mud Gulch to public
@@ -1040,17 +1043,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </template>
     </large-popup>
 
-    <small-popup ref="adBlockerPopup" id="adBlockerPopup" :overlay-close="false" hide-confirm="true" hide-cancel="true" hide-close="true">
-        <template slot="header">
-        We've detected ad blocker!
-        </template>
-        <template slot="content">
-            <p>To <i>avoid</i> this message please turn <i>off</i> ad blocker.</p>
-            <h4>Please wait</h4>
-            <h3>{{adBlockerCountDown}}</h3>
-	    </template>   
-    </small-popup>
-
 </div> <!-- End of vue instance div -->
 
 
@@ -1083,7 +1075,6 @@ var vueData = {
         initial: 300000,
         primary: 420000
     },
-    pokiRewNum: 1,
 
     classIdx: 0,
     playerName: '',
@@ -1163,88 +1154,53 @@ var vueData = {
         { id: 'arena_2P_moon', locKey: 'map_arena_2P_moon', img: 'Level_Arena2Moon.jpg' },
         { id: 'arena_4P_dust', locKey: 'map_arena_4P_dust', img: 'Level_Arena4Dust.jpg' },
         { id: 'arena_4P_town', locKey: 'map_arena_4P_town', img: 'Level_Arena4Town.jpg' },
-        { id: 'biohazard', locKey: 'map_biohazard', img: 'Level_Biohazard_new.jpg' },
         { id: 'blue', locKey: 'map_blue', img: 'Level_Blue.jpg' },
         { id: 'castle', locKey: 'map_castle', img: 'Level_Castle.jpg' },
         { id: 'cluckGrounds', locKey: 'map_cluck_grounds', img: 'Level_CluckGrounds_new.png' },
         { id: 'dirt', locKey: 'map_dirt', img: 'Level_Dirt.jpg' },
-        { id: 'duelPyramid', locKey: 'map_arena_duel_pyramid', img: 'Level_DuelPyramid.png' },
+        { id: 'duelPyramid', locKey: 'map_arena_duel_pyramid', img: 'Level_DuelPyramid_new.png' },
         { id: 'feedlot', locKey: 'map_feedlot', img: 'Level_Feedlot.jpg' },
         { id: 'fortFlip', locKey: 'map_fortflip', img: 'Level_FortFlip.jpg' },
-        { id: 'jailbreak', locKey: 'map_jailbreak', img: 'Level_JailBreak_new.jpg' },
         { id: 'moonbase', locKey: 'map_moonbase', img: 'Level_Moonbase.jpg' },
         { id: 'mudGultch', locKey: 'map_mud_gultch', img: 'Level_MudGultch_new.png' },
-        { id: 'palaceSiege', locKey: 'map_arena_palace_siege', img: 'Level_PalaceSiege.png' },
+        { id: 'palaceSiege', locKey: 'map_arena_palace_siege', img: 'Level_PalaceSiege_new.png' },
         { id: 'ruins', locKey: 'map_ruins', img: 'Level_Ruins.jpg' },
         { id: 'shipyard', locKey: 'map_shipyard', img: 'Level_Shipyard.jpg' },
-        { id: 'skyScratcher', locKey: 'map_sky_scratcher', img: 'Level_SkyScratcher_new.png' },
         { id: 'spaceFactory', locKey: 'map_space_factory', img: 'Level_SpaceFactory_new.png' },
         { id: 'town', locKey: 'map_town', img: 'Level_Town.jpg' },
         { id: 'twoTowers', locKey: 'map_twotowers', img: 'Level_TwoTowers.jpg' },
     ],
     settingsUi: {
-        adjusters: {
-            misc: [
-                { id: 'volume', locKey: 'p_settings_mastervol', min: 0, max: 1, step: 0.01, value: 1, multiplier: 100 }
-            ],
-            mouse: [
-                { id: 'mouseSpeed', locKey: 'p_settings_mousespeed', min: 1, max: 100, step: 1, value: 30 }
-            ],
-            gamepad: [
-                { id: 'sensitivity', locKey: 'p_settings_sensitivity', min: 1, max: 100, step: 1, value: 30 },
-                { id: 'deadzone', locKey: 'p_settings_deadzone', min: 0, max: 1, step: 0.01, value: 0.3, precision: 2 }
-            ]
-        },
-        togglers: {
-            misc: [
-                { id: 'holdToAim', locKey: 'p_settings_holdtoaim', value: true },
-                { id: 'enableChat', locKey: 'p_settings_enablechat', value: true },
-                { id: 'autoDetail', locKey: 'p_settings_autodetail', value: true },
-                { id: 'shadowsEnabled', locKey: 'p_settings_shadows', value: true },
-                { id: 'highRes', locKey: 'p_settings_highres', value: false }
-            ],
-            mouse: [
-                { id: 'mouseInvert', locKey: 'p_settings_invertmouse', value: false },
-            ],
-            gamepad: [
-                { id: 'controllerInvert', locKey: 'p_settings_invertcontroller', value: false },
-            ]
-        },
+        adjusters: [
+            { id: 'volume', locKey: 'p_settings_mastervol', min: 0, max: 1, step: 0.01, value: 1, multiplier: 100 },
+            { id: 'mouseSpeed', locKey: 'p_settings_mousespeed', min: 1, max: 100, step: 1, value: 30 }
+        ],
+        togglers: [
+            { id: 'mouseInvert', locKey: 'p_settings_invertmouse', value: false },
+            { id: 'holdToAim', locKey: 'p_settings_holdtoaim', value: true },
+            { id: 'enableChat', locKey: 'p_settings_enablechat', value: true },
+            { id: 'autoDetail', locKey: 'p_settings_autodetail', value: true },
+            { id: 'shadowsEnabled', locKey: 'p_settings_shadows', value: true },
+            { id: 'highRes', locKey: 'p_settings_highres', value: false }
+        ],
         controls: {
-            keyboard: {
-                // The ids map to the field names in settings.controls[category]
-                game: [
-                    { id: 'up', side: 'left', locKey: 'keybindings_forward', value: 'W' },
-                    { id: 'down', side: 'left', locKey: 'keybindings_backward', value: 'S' },
-                    { id: 'left', side: 'left', locKey: 'keybindings_left', value: 'A' },
-                    { id: 'right', side: 'left', locKey: 'keybindings_right', value: 'D' },
-                    { id: 'jump', side: 'left', locKey: 'keybindings_jump', value: 'SPACE' },
-                    { id: 'fire', side: 'right', locKey: 'keybindings_fire', value: 'MOUSE 0' },
-                    { id: 'scope', side: 'right', locKey: 'keybindings_aim', value: 'SHIFT' },
-                    { id: 'reload', side: 'right', locKey: 'keybindings_reload', value: 'R' },
-                    { id: 'swap_weapon', side: 'right', locKey: 'keybindings_swapweapon', value: 'E' },
-                    { id: 'grenade', side: 'right', locKey: 'keybindings_grenade', value: 'Q' }
-                ],
-                spectate: [
-                    { id: 'ascend', locKey: 'keybindings_spectate_ascend', value: 'E' },
-                    { id: 'descend', locKey: 'keybindings_spectate_descend', value: 'C' }
-                ]
-            },
-            gamepad: {
-                // The ids map to the field names in settings.gamepad[category]
-                game: [
-                    { id: 'jump', locKey: 'keybindings_jump', value: '0' },
-                    { id: 'fire', locKey: 'keybindings_fire', value: '1' },
-                    { id: 'scope', locKey: 'keybindings_aim', value: '2' },
-                    { id: 'reload', locKey: 'keybindings_reload', value: '3' },
-                    { id: 'swap_weapon', locKey: 'keybindings_swapweapon', value: '4' },
-                    { id: 'grenade', locKey: 'keybindings_grenade', value: '5' }
-                ],
-                spectate: [
-                    { id: 'ascend', locKey: 'keybindings_spectate_ascend', value: '1' },
-                    { id: 'descend', locKey: 'keybindings_spectate_descend', value: '2' }
-                ]
-            }
+            // The ids map to the field names in settings.controls[category]
+            game: [
+                { id: 'up', locKey: 'keybindings_forward', value: 'W' },
+                { id: 'down', locKey: 'keybindings_backward', value: 'S' },
+                { id: 'left', locKey: 'keybindings_left', value: 'A' },
+                { id: 'right', locKey: 'keybindings_right', value: 'D' },
+                { id: 'jump', locKey: 'keybindings_jump', value: 'SPACE' },
+                { id: 'fire', locKey: 'keybindings_fire', value: 'MOUSE 0' },
+                { id: 'scope', locKey: 'keybindings_aim', value: 'SHIFT' },
+                { id: 'reload', locKey: 'keybindings_reload', value: 'R' },
+                { id: 'swap_weapon', locKey: 'keybindings_swapweapon', value: 'E' },
+                { id: 'grenade', locKey: 'keybindings_grenade', value: 'Q' }
+            ],
+            spectate: [
+                { id: 'ascend', locKey: 'keybindings_spectate_ascend', value: 'E' },
+                { id: 'descend', locKey: 'keybindings_spectate_descend', value: 'C' }
+            ]
         }
     },
 
@@ -1333,8 +1289,6 @@ var vueData = {
             adContainerId: 'pauseAdPlacement',
         }
     },
-
-    isPaused: false,
 
     isEvent: false,
     doubleEggWeekendSoon: false,
@@ -1446,7 +1400,7 @@ var vueData = {
     },
     urlParams: null,
     urlParamSet: null,
-    adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21743024831/ShellShock_Video&description_url=__page-url__&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=vast&sz=640x480&unviewed_position_start=1',
+    adTagUrl: 'https://pubads.g.doublecclick.net/gampad/ads?iu=/21743024831/ShellShock_Video&description_url=__page-url__&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=vast&sz=640x480&unviewed_position_start=1',
     chickenShack: [
         {sku: 'egg_pack_small', price: 5},
         {sku: 'egg_pack_medium', price: 10},
@@ -1455,87 +1409,7 @@ var vueData = {
         {sku: 'golden_chicken_pass', price: 4.99},
     ],
     showNugget: true,
-    showGoldenChicken: false,
-    nugStart: null,
-    nugCounter: null,
-    isBuyNugget: false,
-    adBlockerCountDown: 10,
-    controllerType: 'generic',
-    controllerId: '',
-    controllerButtonIcons: {
-        xbox: [
-            'A',
-            'B',
-            'X',
-            'Y',
-            'LB',
-            'RB',
-            'LT',
-            'RT',
-            'Select',
-            'Start',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_stickleft.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_stickright.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadup.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpaddown.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadleft.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadright.svg">'
-        ],
-        ps: [
-            '<img class="ss_buttonbind_icon" src="img/controller/button_cross.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_circle.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_square.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_triangle.svg">',
-            'LB',
-            'RB',
-            'LT',
-            'RT',
-            'Select',
-            'Start',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_stickleft.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_stickright.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadup.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpaddown.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadleft.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadright.svg">'
-        ],
-        switchpro: [
-            'B',
-            'A',
-            'Y',
-            'X',
-            'LB',
-            'RB',
-            'LT',
-            'RT',
-            '-',
-            '+',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_stickleft.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_stickright.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadup.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpaddown.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadleft.svg">',
-            '<img class="ss_buttonbind_icon" src="img/controller/button_dpadright.svg">'
-        ],
-        generic: [
-            '0',
-            '1',
-            '2',
-            '3',
-            '4',
-            '5',
-            '6',
-            '7',
-            '8',
-            '9',
-            '10',
-            '11',
-            '12',
-            '13',
-            '14',
-            '15'
-        ]
-    }
+    showGoldenChicken: false
 }</script>
 
 <!-- Shared tags must come before the screen tags -->
@@ -1807,6 +1681,7 @@ function createPopupComponent(templateId) {
 					vueApp.setLightOverlay(false);
 				} else {
 					vueApp.setDarkOverlay(this.overlayType === undefined || this.overlayType === this.overlays.dark, this.overlayClass);
+					vueApp.setLightOverlay(this.overlayType === this.overlays.light, this.overlayClass);
 				}
 
 				if (!this.isShowing) {
@@ -1949,18 +1824,15 @@ function createDisplayAdComponent(templateId) {
                 this.displayAdContainer.appendChild(this.scriptTag);
             },
 			setVisible(visible) {
-
                 this.isAdShowing = visible;
 
 				if (!this.isAdShowing) {
                     window.removeEventListener('resize', this.hideAdBasedOnscreenSize);
                     if (vueApp.isPoki && this.pokiAdSize) PokiSDK.destroyAd(this.displayAdContainer);
-                    return;
 				} else {
                     this.triggerAd(this.call);
                     setTimeout(() => this.hideAdBasedOnscreenSize(), 500);
                     window.addEventListener('resize', this.hideAdBasedOnscreenSize);
-                    return;
                 }
 
             },
@@ -1969,29 +1841,21 @@ function createDisplayAdComponent(templateId) {
                 if (this.hideAds) {
                     return;
                 }
-                console.log(`display ad ${this.id} showing`);
                 this.setVisible(true);
             },
 			hide() {
                 this.setVisible(false);
-                console.log(`display ad ${this.id} hiding`);
             },
             triggerAd(trigger) {
-                const blockHost = document.location.host,
-                      toBlock = ['eggisthenewblack.com', 'hardshell.life', 'violentegg.club'],
-                      blockAds = toBlock.includes(blockHost);
-
-                if (blockAds) {
+                const host = document.location.host;
+                if ((host === 'eggisthenewblack.com' || host === 'hardshell.life') && !this.override) {
                     return;
                 }
                 if (!vueApp.isPoki) {
                     if (trigger) trigger();
                     return;
                 } else {
-                   if (this.pokiAdSize) {
-                       PokiSDK.displayAd(this.displayAdContainer, this.pokiAdSize);
-                       ga('send', 'event', 'Poki', 'Display ad', this.displayAdContainer.id)
-                   }
+                   if (this.pokiAdSize) PokiSDK.displayAd(this.displayAdContainer, this.pokiAdSize);
                     return;
                 }
             },
@@ -2025,6 +1889,9 @@ function createDisplayAdComponent(templateId) {
                     this.hide()
                 }
             },
+            hideAds(value) {
+                console.log('does it change', value);
+            }
         }
 	}
 }
@@ -2148,107 +2015,36 @@ var comp_gdpr = {
 </script>
 <script id="settings-template" type="text/x-template">
   <div>
-  	<h1 class="roundme_sm">{{ loc.p_settings_title }}</h1>
+	<h1 class="roundme_sm">{{ loc.p_settings_title }}</h1>
 
-	<div id="horizontalTabs">
-        <button id="keyboard_button" @click="selectTab" class="ss_bigtab bevel_blue ss_marginright" :class="(showKeyboardTab ? 'selected' : '')"><img src="img/ico_keyboard.svg" class="ss_bigtab_icon"> <img src="img/ico_mouse.svg" class="ss_bigtab_icon"></button>
-
-        <button id="controller_button" @click="selectTab" class="ss_bigtab bevel_blue ss_marginright" :class="(showControllerTab ? 'selected' : '')"><img src="img/ico_gamepad.svg" class="ss_bigtab_icon"></button>
-
-        <button id="misc_button" @click="selectTab" class="ss_bigtab bevel_blue" :class="(showMiscTab ? 'selected' : '')"><img src="img/ico_monitor.svg" class="ss_bigtab_icon"> <img src="img/ico_speaker.svg" class="ss_bigtab_icon"> <img src="img/ico_privacy.svg" class="ss_bigtab_icon"></button>
-    </div>
-
-    <div id="popupInnards" class="roundme_sm fullwidth f_col ss_margintop_sm ss_marginbottom_xl">
-		<div id="settings_keyboard" v-show="showKeyboardTab">
+    <div id="popupInnards" class="roundme_sm fullwidth f_row f_spaced">
+		<div id="account_left">
 			<h3 class="nospace">{{ loc.p_settings_keybindings }}</h3>
 			
-			<div class="f_row ss_margintop">
-				<div class="f_col">
-					<div v-for="c in settingsUi.controls.keyboard.game" v-if="c.side == 'left'" class="nowrap">
-						<settings-control-binder :loc="loc" :control-id="c.id" :control-value="c.value" @control-captured="onGameControlCaptured"></settings-control-binder>
-						<div class="label">{{ loc[c.locKey] }}</div>
-					</div>
-
-					<div class="ss_margintop_xl">
-						<div v-for="c in settingsUi.controls.keyboard.spectate" class="nowrap">
-							<settings-control-binder :loc="loc" :control-id="c.id" :control-value="c.value" @control-captured="onSpectateControlCaptured"></settings-control-binder>
-							<div class="label">{{ loc[c.locKey] }}</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="f_col ss_marginleft_xl">
-					<div v-for="c in settingsUi.controls.keyboard.game" v-if="c.side == 'right'" class="nowrap">
-						<settings-control-binder :loc="loc" :control-id="c.id" :control-value="c.value" @control-captured="onGameControlCaptured"></settings-control-binder>
-						<div class="label">{{ loc[c.locKey] }}</div>
-					</div>
-
-					<div class="ss_margintop">
-						<div v-for="t in settingsUi.adjusters.mouse" class="nowrap">
-							<settings-adjuster :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" :min="t.min" :max="t.max" :step="t.step" :multiplier="t.multiplier" @setting-adjusted="onSettingAdjusted"></settings-adjuster>
-						</div>
-
-						<div v-for="t in settingsUi.togglers.mouse" class="nowrap">
-							<settings-toggler v-if="(t.id === 'shadowsEnabled' || t.id === 'highRes') ? showDetailSettings : true" :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" @setting-toggled="onSettingToggled"></settings-toggler>
-						</div>
-					</div>
-
-				</div>
+			<div v-for="c in settingsUi.controls.game" class="nowrap">
+				<settings-control-binder :loc="loc" :control-id="c.id" :control-value="c.value" @control-captured="onGameControlCaptured"></settings-control-binder>
+				<div class="label">{{ loc[c.locKey] }}</div>
 			</div>
+
+			<div v-for="c in settingsUi.controls.spectate" class="nowrap">
+				<settings-control-binder :loc="loc" :control-id="c.id" :control-value="c.value" @control-captured="onSpectateControlCaptured"></settings-control-binder>
+				<div class="label">{{ loc[c.locKey] }}</div>
+			</div>
+
+			<h3 class="nospace ss_margintop">{{ loc.p_settings_language }}</h3>
+			<language-selector :languages="languages" :loc="loc" :selectedLanguageCode="currentLanguageCode" class="ss_select"></language-selector>
 		</div>
 		
-		<div id="settings_controller" v-show="showControllerTab">
-			<h3 class="nospace">{{ loc.p_settings_gamepadbindings }}</h3>
-			
-			<div class="f_row ss_margintop">
-				<div class="f_col">
-					<div v-for="c in settingsUi.controls.gamepad.game" class="nowrap">
-						<settings-gamepad-binder :loc="loc" :control-id="c.id" :control-value="c.value" @control-captured="onGamepadGameControlCaptured" :controller-type="controllerType"></settings-gamepad-binder>
-						<div class="label">{{ loc[c.locKey] }}</div>
-					</div>
-				</div>
-
-				<div class="f_col ss_marginleft_xl">
-					<div class="ss_marginbottom_xl">
-						<div v-for="c in settingsUi.controls.gamepad.spectate" class="nowrap">
-							<settings-gamepad-binder :loc="loc" :control-id="c.id" :control-value="c.value" @control-captured="onGamepadSpectateControlCaptured" :controller-type="controllerType"></settings-gamepad-binder>
-							<div class="label">{{ loc[c.locKey] }}</div>
-						</div>
-					</div>
-
-					<div v-for="t in settingsUi.adjusters.gamepad" class="nowrap">
-						<settings-adjuster :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" :min="t.min" :max="t.max" :step="t.step" :multiplier="t.multiplier" :precision="t.precision" @setting-adjusted="onSettingAdjusted"></settings-adjuster>
-					</div>
-
-					<div v-for="t in settingsUi.togglers.gamepad" class="nowrap">
-						<settings-toggler v-if="(t.id === 'shadowsEnabled' || t.id === 'highRes') ? showDetailSettings : true" :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" @setting-toggled="onSettingToggled"></settings-toggler>
-					</div>
-				</div>
+		<div id="settings_right">
+			<div v-for="t in settingsUi.adjusters" class="nowrap">
+				<settings-adjuster :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" :min="t.min" :max="t.max" :step="t.step" :multiplier="t.multiplier" @setting-adjusted="onSettingAdjusted"></settings-adjuster>
 			</div>
 
-			<p>{{ controllerId }}</p>
-			<p>{{ loc.p_settings_controllerhelp }} <a target="_blank" href="https://html5gamepad.com">html5gamepad.com</a></p>
-		</div>
-
-		<div id="settings_misc" v-show="showMiscTab">
-			<div class="f_row">
-				<div class="f_col">
-					<div v-for="t in settingsUi.adjusters.misc" class="nowrap">
-						<settings-adjuster :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" :min="t.min" :max="t.max" :step="t.step" :multiplier="t.multiplier" @setting-adjusted="onSettingAdjusted"></settings-adjuster>
-					</div>
-
-					<h3 class="nospace ss_margintop">{{ loc.p_settings_language }}</h3>
-					<language-selector :languages="languages" :loc="loc" :selectedLanguageCode="currentLanguageCode" class="ss_select"></language-selector>
-
-					<button v-if="isFromEU" @click="onPrivacyOptionsClicked" class="ss_button btn_blue bevel_blue btn_md ss_margintop_xl">{{ loc.p_settings_privacy }}</button>
-				</div>
-
-				<div class="f_col ss_marginleft_xl">
-					<div v-for="t in settingsUi.togglers.misc" class="nowrap">
-						<settings-toggler v-if="(t.id === 'shadowsEnabled' || t.id === 'highRes') ? showDetailSettings : true" :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" @setting-toggled="onSettingToggled"></settings-toggler>
-					</div>
-				</div>
+			<div v-for="t in settingsUi.togglers" class="nowrap">
+				<settings-toggler v-if="(t.id === 'shadowsEnabled' || t.id === 'highRes') ? showDetailSettings : true" :loc="loc" :loc-key="t.locKey" :control-id="t.id" :control-value="t.value" @setting-toggled="onSettingToggled"></settings-toggler>
 			</div>
+
+			<button v-show="showPrivacyOptions" @click="onPrivacyOptionsClicked" class="ss_button btn_blue bevel_blue btn_md ss_margintop_xl">{{ loc.p_settings_privacy }}</button>
 		</div>
 	</div>
 
@@ -2288,7 +2084,7 @@ var comp_settings_control_binder = {
 		},
 		
 		reset: function () {
-			this.currentValue = (this.controlValue === null) ? 'undefined' : this.controlValue;
+			this.currentValue = this.controlValue;
 			this.isCapturing = false;
 			this.$refs.controlInput.blur();
 		},
@@ -2353,101 +2149,13 @@ var comp_settings_control_binder = {
 		}
 	}
 };
-</script><script id="settings-gamepad-binder-template" type="text/x-template">
-	<button ref="gamepadInput" class="ss_keybind clickme" :class="(currentValue === 'undefined' ? 'ss_keybind_undefined' : '')"
-		v-on:mousedown="onMouseDown($event)"
-		v-on:keydown="onKeyDown($event)" 
-		v-on:keyup="onKeyUp($event)" 
-		v-on:focusout="onFocusOut($event)"
-		:key="controllerType">
-		<span v-html="currentValue"></span></button>
-</script>
-
-<script>
-var comp_settings_gamepad_binder = {
-	template: '#settings-gamepad-binder-template',
-	props: ['loc', 'controlId', 'controlValue', 'controllerType'],
-	
-	data: function () {
-		return {
-			currentValue: (this.controlValue === null) ? 'undefined' : vueData.controllerButtonIcons[this.controllerType][this.controlValue],
-			isCapturing: false
-		}
-	},
-
-	beforeUpdate: function () {
-		if (!this.isCapturing) {
-			this.setIcon(this.controlValue);
-		}
-	},
-
-	methods: {
-		playSound (sound) {
-			vueApp.playSound(sound);
-		},
-		
-		reset: function () {
-			this.setIcon(this.controlValue);
-			this.isCapturing = false;
-
-			removeEventListener('gamepadbuttondown', this.onButtonDown);
-			removeEventListener('gamepadbuttonup', this.onButtonUp);
-		},
-
-		capture: function (value) {
-			this.isCapturing = false;
-			this.$refs.gamepadInput.blur();
-			this.$emit('control-captured', this.controlId, value);
-			this.reset();
-		},
-
-		onMouseDown: function (event) {
-			if (!this.isCapturing) {
-				this.currentValue = this.loc.press_button;
-				this.isCapturing = true;
-
-				addEventListener('gamepadbuttondown', this.onButtonDown);
-				addEventListener('gamepadbuttonup', this.onButtonUp);
-			}
-		},
-
-		onKeyDown: function (event) {
-			event.stopPropagation();
-		},
-
-		onKeyUp: function (event) {
-			event.stopPropagation();
-		},
-
-		onButtonDown: function (event) {
-			if (event.detail == 8 || event.detail == 9) return;
-			this.playSound('./sound/ui/ui_onchange.mp3')
-			this.capture(event.detail);
-		},
-
-		onFocusOut: function (event) {
-			this.reset();
-		},
-
-		setIcon: function (value) {
-			this.currentValue = (value === null) ? 'undefined' : vueData.controllerButtonIcons[this.controllerType][value];
-		}
-	},
-
-	watch: {
-		// The value prop gets updated by the parent control; watch for changes and update the backing field of the textbox
-		controlValue: function (newValue) {
-			this.setIcon(newValue);
-		}
-	}
-};
 </script><script id="settings-adjuster-template" type="text/x-template">
 	<div>
-		<h3 class="nospace">{{ loc[locKey] }}</h3>
+		<h3 class="center_cont nospace">{{ loc[locKey] }}</h3>
 
-		<div class="f_row">
+		<div class="f_row ss_margintop">
 			<input class="ss_slider" type="range" :min="min" :max="max" :step="step" v-model="currentValue" @change="onChange">
-			<label class="ss_slider label">{{ getCurrentValue() }}</label>
+			<label class="ss_slider label">{{ Math.floor(currentValue * (multiplier || 1)) }}</label>
 		</div>
 	</div>
 </script>
@@ -2455,7 +2163,7 @@ var comp_settings_gamepad_binder = {
 <script>
 var comp_settings_adjuster = {
 	template: '#settings-adjuster-template',
-	props: ['loc', 'locKey', 'controlId', 'controlValue', 'min', 'max', 'step', 'multiplier', 'precision'],
+	props: ['loc', 'locKey', 'controlId', 'controlValue', 'min', 'max', 'step', 'multiplier'],
 
 	data: function () {
 		return {
@@ -2467,15 +2175,6 @@ var comp_settings_adjuster = {
 		onChange: function (event) {
 			this.$emit('setting-adjusted', this.controlId, this.currentValue);
 			vueApp.playSound('./sound/ui/ui_onchange.mp3');
-		},
-
-		getCurrentValue: function () {
-			if (this.precision) {
-				return Number.parseFloat(this.currentValue).toFixed(this.precision);
-			}
-			else {
-				return Math.floor(this.currentValue * (this.multiplier || 1));
-			}
 		}
 	},
 
@@ -2528,19 +2227,14 @@ var comp_settings = {
 	template: '#settings-template',
 	components: {
 		'settings-control-binder': comp_settings_control_binder,
-		'settings-gamepad-binder': comp_settings_gamepad_binder,
 		'language-selector': comp_language_selector,
 		'settings-adjuster': comp_settings_adjuster,
 		'settings-toggler': comp_settings_toggler
 	},
-	props: ['loc', 'settingsUi', 'languages', 'currentLanguageCode', 'showPrivacyOptions', 'controllerId', 'isFromEU', 'controllerType'],
+	props: ['loc', 'settingsUi', 'languages', 'currentLanguageCode', 'showPrivacyOptions'],
 
 	data: function () {
 		return {
-			showKeyboardTab: true,
-			showControllerTab: false,
-			showMiscTab: false,
-
 			originalSettings: {},
 			showDetailSettings: false,
 			originalLanguage: '',
@@ -2548,28 +2242,6 @@ var comp_settings = {
 	},
 	
 	methods: {
-		selectTab: function (e) {
-			this.showKeyboardTab = false;
-			this.showControllerTab = false;
-			this.showMiscTab = false;
-
-			switch (e.target.id) {
-				case 'keyboard_button':
-					this.showKeyboardTab = true;
-					break;
-
-				case 'controller_button':
-					this.showControllerTab = true;
-					break;
-
-				case 'misc_button':
-					this.showMiscTab = true;
-					break;
-			}
-
-			vueApp.playSound('./sound/ui/ui_toggletab.mp3');
-		},
-
 		captureOriginalSettings: function () {
 			this.originalSettings = deepClone(vueData.settingsUi);
 			this.originalLanguage = this.currentLanguageCode;
@@ -2577,25 +2249,17 @@ var comp_settings = {
 
 		applyOriginalSettings: function () {
 			vueData.settingsUi = this.originalSettings;
-			this.showDetailSettings = !vueData.settingsUi.togglers.misc.find( a => { return a.id === 'autoDetail'; }).value;
+			this.showDetailSettings = !vueData.settingsUi.togglers.find( a => { return a.id === 'autoDetail'; }).value;
 
 			console.log('applying original settings: ' + JSON.stringify(vueData.settingsUi));
 		},
 
 		onGameControlCaptured: function (id, value) {
-			this.onControlCaptured(this.settingsUi.controls.keyboard.game, id, value)
+			this.onControlCaptured(this.settingsUi.controls.game, id, value)
 		},
 
 		onSpectateControlCaptured: function (id, value) {
-			this.onControlCaptured(this.settingsUi.controls.keyboard.spectate, id, value)
-		},
-
-		onGamepadGameControlCaptured: function (id, value) {
-			this.onControlCaptured(this.settingsUi.controls.gamepad.game, id, value)
-		},
-
-		onGamepadSpectateControlCaptured: function (id, value) {
-			this.onControlCaptured(this.settingsUi.controls.gamepad.spectate, id, value)
+			this.onControlCaptured(this.settingsUi.controls.spectate, id, value)
 		},
 
 		onControlCaptured: function (controls, id, value) {
@@ -2615,11 +2279,8 @@ var comp_settings = {
 
 		onSettingToggled: function (id, value) {
 			console.log('value: ' + value);
-
-			Object.values(this.settingsUi.togglers).forEach(v => {
-				var toggler = v.find(t => { return t.id === id; });
-				if (toggler) toggler.value = value;
-			})
+			var toggler = this.settingsUi.togglers.find( (t) => { return t.id === id; });
+			toggler.value = value;
 
 			if (id === 'autoDetail') {
 				this.showDetailSettings = !value;
@@ -2627,10 +2288,7 @@ var comp_settings = {
 		},
 
 		onSettingAdjusted: function (id, value) {
-			Object.values(this.settingsUi.adjusters).forEach(v => {
-				var adjuster = v.find( (a) => { return a.id === id; });
-				if (adjuster) adjuster.value = value;
-			})
+			this.settingsUi.adjusters.find( (a) => { return a.id === id; }).value = value;
 
 			if (id === 'volume') {
 				extern.setVolume(value);
@@ -2638,14 +2296,6 @@ var comp_settings = {
 
 			if (id === 'mouseSpeed') {
 				extern.setMouseSpeed(value);
-			}
-
-			if (id === 'sensitivity') {
-				extern.setControllerSpeed(value);
-			}
-
-			if (id === 'deadzone') {
-				extern.setDeadzone(value);
 			}
 		},
 
@@ -2694,56 +2344,39 @@ var comp_settings = {
 		},
 		setSettings: function (settings) {
 			var getSettingById = (list, id) => {
-				return list.filter( o => {
-						return o.id == id;
-				})[0];
+					return list.filter( o => {
+							return o.id == id;
+					})[0];
 			};
 
-			// Keyboard
-
-			getSettingById(this.settingsUi.controls.keyboard.game, 'up').value = settings.controls.keyboard.game.up;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'down').value = settings.controls.keyboard.game.down;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'left').value = settings.controls.keyboard.game.left;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'right').value = settings.controls.keyboard.game.right;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'jump').value = settings.controls.keyboard.game.jump;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'fire').value = settings.controls.keyboard.game.fire;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'scope').value = settings.controls.keyboard.game.scope;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'reload').value = settings.controls.keyboard.game.reload;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'swap_weapon').value = settings.controls.keyboard.game.swap_weapon;
-			getSettingById(this.settingsUi.controls.keyboard.game, 'grenade').value = settings.controls.keyboard.game.grenade;
-			getSettingById(this.settingsUi.controls.keyboard.spectate, 'ascend').value = settings.controls.keyboard.spectate.ascend;
-			getSettingById(this.settingsUi.controls.keyboard.spectate, 'descend').value = settings.controls.keyboard.spectate.descend;
+			getSettingById(this.settingsUi.controls.game, 'up').value = settings.controls.game.up;
+			getSettingById(this.settingsUi.controls.game, 'down').value = settings.controls.game.down;
+			getSettingById(this.settingsUi.controls.game, 'left').value = settings.controls.game.left;
+			getSettingById(this.settingsUi.controls.game, 'right').value = settings.controls.game.right;
+			getSettingById(this.settingsUi.controls.game, 'jump').value = settings.controls.game.jump;
+			getSettingById(this.settingsUi.controls.game, 'fire').value = settings.controls.game.fire;
+			getSettingById(this.settingsUi.controls.game, 'scope').value = settings.controls.game.scope;
+			getSettingById(this.settingsUi.controls.game, 'reload').value = settings.controls.game.reload;
+			getSettingById(this.settingsUi.controls.game, 'swap_weapon').value = settings.controls.game.swap_weapon;
+			getSettingById(this.settingsUi.controls.game, 'grenade').value = settings.controls.game.grenade;
+			getSettingById(this.settingsUi.controls.spectate, 'ascend').value = settings.controls.spectate.ascend;
+			getSettingById(this.settingsUi.controls.spectate, 'descend').value = settings.controls.spectate.descend;
 			
-			// Gamepad
+			getSettingById(this.settingsUi.adjusters, 'volume').value = settings.volume;
+			getSettingById(this.settingsUi.adjusters, 'mouseSpeed').value = settings.mouseSpeed;
 
-			getSettingById(this.settingsUi.controls.gamepad.game, 'jump').value = settings.controls.gamepad.game.jump;
-			getSettingById(this.settingsUi.controls.gamepad.game, 'fire').value = settings.controls.gamepad.game.fire;
-			getSettingById(this.settingsUi.controls.gamepad.game, 'scope').value = settings.controls.gamepad.game.scope;
-			getSettingById(this.settingsUi.controls.gamepad.game, 'reload').value = settings.controls.gamepad.game.reload;
-			getSettingById(this.settingsUi.controls.gamepad.game, 'swap_weapon').value = settings.controls.gamepad.game.swap_weapon;
-			getSettingById(this.settingsUi.controls.gamepad.game, 'grenade').value = settings.controls.gamepad.game.grenade;
-			getSettingById(this.settingsUi.controls.gamepad.spectate, 'ascend').value = settings.controls.gamepad.spectate.ascend;
-			getSettingById(this.settingsUi.controls.gamepad.spectate, 'descend').value = settings.controls.gamepad.spectate.descend;
-
-			// Misc
-
-			getSettingById(this.settingsUi.adjusters.misc, 'volume').value = settings.volume;
-			getSettingById(this.settingsUi.adjusters.mouse, 'mouseSpeed').value = settings.mouseSpeed;
-			getSettingById(this.settingsUi.adjusters.gamepad, 'sensitivity').value = settings.controllerSpeed;
-			getSettingById(this.settingsUi.adjusters.gamepad, 'deadzone').value = settings.deadzone;
-
-			getSettingById(this.settingsUi.togglers.mouse, 'mouseInvert').value = (settings.mouseInvert !== 1);
-			getSettingById(this.settingsUi.togglers.gamepad, 'controllerInvert').value = (settings.controllerInvert !== 1);
-			getSettingById(this.settingsUi.togglers.misc, 'holdToAim').value = settings.holdToAim;
-			getSettingById(this.settingsUi.togglers.misc, 'enableChat').value = settings.enableChat;
-			getSettingById(this.settingsUi.togglers.misc, 'autoDetail').value = settings.autoDetail;
-			getSettingById(this.settingsUi.togglers.misc, 'shadowsEnabled').value = settings.shadowsEnabled;
-			getSettingById(this.settingsUi.togglers.misc, 'highRes').value = settings.highRes;
+			getSettingById(this.settingsUi.togglers, 'mouseInvert').value = (settings.mouseInvert !== 1);
+			getSettingById(this.settingsUi.togglers, 'holdToAim').value = settings.holdToAim;
+			getSettingById(this.settingsUi.togglers, 'enableChat').value = settings.enableChat;
+			getSettingById(this.settingsUi.togglers, 'autoDetail').value = settings.autoDetail;
+			getSettingById(this.settingsUi.togglers, 'shadowsEnabled').value = settings.shadowsEnabled;
+			getSettingById(this.settingsUi.togglers, 'highRes').value = settings.highRes;
 
 			console.log('auto detail: ' + settings.autoDetail);
 			this.showDetailSettings = !settings.autoDetail;
-		}
-	}
+		},
+	},
+
 };
 </script><script id="help-template" type="text/x-template">
     <div>
@@ -3110,9 +2743,8 @@ var comp_house_ad_small = {
         }
     }
 };
-</script>
-<script id="item-template" type="text/x-template">
-	<div v-if="!showPhysicalMerch" class="store_item roundme_lg clickme" ref="eggItemInvetory" :class="highlightSelected()" @click="onClick">
+</script><script id="item-template" type="text/x-template">
+	<div class="store_item roundme_lg '.$is_hi.' '.$is_na.' clickme" ref="eggItemInvetory" :class="highlightSelected()" @click="onClick">
 		<div v-if="showPrice" class="equip_smallprice">
 			<svg class="equip_egg eggIcon"><use xlink:href="#icon-egg"></use></svg>
 			<div class="equip_cost">{{ item.price }}</div>
@@ -3156,7 +2788,6 @@ var comp_item = {
 		},
 
 		renderItem: function () {
-			if (this.showPhysicalMerch && vueData.equip.mode == vueData.equip.equipModes.shop) return;
 			extern.renderItemToCanvas(this.item, this.$refs.itemCanvas);
 		},
 
@@ -3168,7 +2799,6 @@ var comp_item = {
 			this.$emit('item-selected', this.item);
 		},
 		itemHightlightedOrder: function() {
-			if (this.showPhysicalMerch && vueData.equip.mode == vueData.equip.equipModes.shop) return;
 			return this.$refs.eggItemInvetory.classList.contains('highlight') ? this.$refs.eggItemInvetory.style.order='-1' : null;
 		},
 	},
@@ -3244,13 +2874,6 @@ var comp_gold_chicken_popup = {
         },
 
         onNuggetClick: function () {
-
-			if (!vueData.firebaseId) {
-                this.$parent.hide();
-				vueApp.showGenericPopup('p_redeem_error_no_player_title', 'p_redeem_error_no_player_content', 'ok');
-				return;
-            }
-
             if (!this.accountSettled) {
                 setTimeout(() => {
                     this.onNuggetClick();
@@ -3271,12 +2894,11 @@ var comp_gold_chicken_popup = {
         
         <h3 class="nospace center_cont">{{ loc.p_nugget_instruction }}</h3>
         
+        <iframe id="miniGameFrame" ref="miniGameFrame" src="about:blank" frameBorder="0" class="roundme_lg" ></iframe>
+        
         <p align="center">
             <button id="gotNuggetOK" v-show="isMiniGameComplete" @click="onGotNugget" class="ss_button btn_shiny clickme invisible">{{ loc.p_nugget_button }}</button>
         </p>
-
-        <iframe id="miniGameFrame" ref="miniGameFrame" src="about:blank" frameBorder="0" class="roundme_lg" ></iframe>
-        
 
         <div class="center_cont">
             <display-ad id="div-gpt-ad-ShellShockers_Chicken_Nugget_Banner" ref="nuggetDisplayAdd" class="pauseAdPlacement" :call="displayAdFunction" pokiAdSize="728x90"></display-ad>
@@ -3305,7 +2927,10 @@ var comp_chicken_nugget_popup = {
         loadMiniGame: function () {
             this.isMiniGameComplete = false;
             this.$refs.miniGameFrame.src = "app_nugget/index.html";
+            // this.placeBannerAdTag(vueApp.$options.multisizeAdTag);
             this.$refs.nuggetDisplayAdd.show();
+            // The ad tags are outside of the Vue app; manipulate the DOM directly
+            // extern.showBannerAd('chickenNuggetAdContainer');
         },
 
         unloadMiniGame: function () {
@@ -3352,7 +2977,7 @@ var comp_chicken_nugget_popup = {
 			</div>
 
 			<div id="panel_front_news">
-				<!-- <event-panel :show-soon="true" :show-ui="true"></event-panel> -->
+				<event-panel :show-soon="true" :show-ui="true"></event-panel>
 				<div id="news_feed" class="front_panel roundme_md">
 					<div id="news_mask"></div>
 					<h3 class="nospace">{{ loc.home_latestnews }}</h3>
@@ -3364,7 +2989,7 @@ var comp_chicken_nugget_popup = {
 		</div>
 
 		<div id="mainFooter">
-			<chicken-panel ref="chickenPanel" id="chicken_panel" :local="loc" :do-upgraded="isUpgraded"></chicken-panel>
+			<chicken-panel id="chicken_panel" :local="loc" :do-upgraded="isUpgraded"></chicken-panel>
 			<footer-links-panel id="footer_links_panel" :loc="loc"></footer-links-panel>
 			<social-panel id="social_panel"></social-panel>
 		</div>
@@ -3816,7 +3441,7 @@ var comp_stats_panel = {
 				<option v-for="g in gameTypes" v-bind:value="g.value">{{ loc[g.locKey] }}</option>
 			</select><br>
 			<button name="server" @click="onPickServerButtonClick" :disabled="isButtonDisabled" class="ss_button btn_blue bevel_blue fullwidth">{{ loc.server }}: {{ loc[serverLocKey] }}</button><br>
-			<button name="play" @click="onPlayButtonClick" class="ss_button btn_big btn_yolk bevel_yolk fullwidth nospace play-button"><i class="fa fa-play fa-sm"></i> {{ loc.home_play }}</button>
+			<button name="play" @click="onPlayButtonClick" class="ss_button btn_big btn_green bevel_green fullwidth nospace"><i class="fa fa-play fa-sm"></i> {{ loc.home_play }}</button>
 			
 			<h3>{{ loc.home_privategames }}</h3>
 			
@@ -4003,8 +3628,6 @@ var comp_play_panel = {
 				return;
 			}
 
-			vueApp.disablePlayButton(true);
-
 			vueApp.game.respawnTime = 0;
 			vueApp.externPlayObject(vueData.playTypes.joinPublic, this.pickedGameType, this.playerName, -1, '');
 			vueApp.playSound('./sound/ui/ui_playconfirm.mp3');
@@ -4038,7 +3661,7 @@ var comp_play_panel = {
 			vueData.home.joinPrivateGamePopup.code = vueData.home.joinPrivateGamePopup.code.replace(parsedUrl.root, '');
 			this.$refs.joinPrivateGamePopup.hide();
 			vueApp.externPlayObject(vueData.playTypes.joinPrivate, '', this.playerName, '', vueData.home.joinPrivateGamePopup.code);
-		},
+		}
 	},
 
 	computed: {
@@ -4087,7 +3710,6 @@ var comp_play_panel = {
 		<div class="tool-tip">
 			<img src="img/ico_weapon_boltAction.png" class="weapon_img roundme_lg" :class="addSelectedCssClass(charClass.Crackshot)" @click="selectClass(charClass.Crackshot)"><span><strong>{{loc.weapon_crackshot_title}}: </strong>{{loc.weapon_crackshot_content}}</span>
 		</div>
-	</div>
 </template>
 
 <script>
@@ -4116,9 +3738,8 @@ var comp_weapon_select_panel = {
 			return (this.currentClass === classIdx)
 				? 'weapon_selected'
 				: '';
-		},
-	}
-
+		}
+	},
 
 	// watch: {
 	// 	accountSettled(val) {
@@ -4257,23 +3878,10 @@ var comp_newsfeed_panel = {
 	}
 };
 </script><script id="chicken-panel-template" type="text/x-template">
-	<div id="showBuyPassDialogButton" class="new">
-		<div class="chicken-panel--upgraded" v-show="doUpgraded">
-			<div class="tool-tip tool-tip--right">
-				<span v-if="nugCounter" id="nugget-countdown">{{nugCounter}} Minutes remaining.</span>
-				<img class="upgraded-nugget" src="img/chicken-nugget/goldenNugget_static.png">
-				<!-- <div id="nugget-timer" class="nugget-timer--wrapper">
-					<div class="timer-background"></div>
-					<div class="timer spinner"></div>
-					<div class="timer filler"></div>
-					<div class="mask"></div>
-				</div> -->
-			</div>
-		</div>
-		
-		<div class="chicken-panel--no-upgraded" v-show="!doUpgraded">
-			<img src="img/chicken-nugget/starburst.png" @click="onChickenClick" class="clickme starburst">
-			<img src="img/chicken-nugget/goldenNuggetGIFWIP.gif" @click="onChickenClick" class="clickme nugget-chick">
+	<div id="showBuyPassDialogButton">
+		<img src="img/ico_chickenBadge.png" v-show="doUpgraded">
+		<div v-show="!doUpgraded">
+			<img src="img/anim_chicken.gif" @click="onChickenClick" class="clickme">
 		
 			<div id="buyPassChickenSpeech">
 				<img src="img/speechtail.png" class="buyPassChickenSpeechTail">
@@ -4295,58 +3903,13 @@ var comp_chicken_panel = {
 			vueApp.playSound('./sound/ui/ui_chicken.mp3');
 			vueApp.showGoldChickenPopup();
 			ga('send', 'event', this.googleAnalytics.cat.purchases, 'Golden Chicken Click');
-		},
-		setupNuggetTimer() {
-
-			if ((!this.isUpgraded || this.nugStart === null || !this.nugStart) && !this.isBuyNugget)
-				return;
-			
-			if (this.isBuyNugget) {
-				const fauxStart = new Date();
-				const fH = fauxStart.getHours() + 1;
-				this.nugStart = new Date().setHours(fH);
-			}
-
-			const current = new Date(Date.now()),
-					end = new Date(this.nugStart),
-					tz = ! this.isBuyNugget ? end.getTimezoneOffset() / 60 : 0,
-					cHr = current.getHours() + tz,
-					now = new Date().setHours(cHr),
-					timer = document.getElementById('nugget-timer');
-
-			for (let i = 0; i < timer.children.length; i++) {
-				timer.children[i].style.animationDelay = (Math.floor(end - (now)) / 1000) - 3600 + 's';
-			}
-
-			this.initTimer(end);
-		},
-		timeRemaining(end) {
-			const t = Date.parse(end) - Date.parse(new Date()),
-				  minutes = Math.floor( (t/1000/60) % 60 ),
-				  hours = Math.floor( (t/(1000*60*60)) % 24 );
-			return {
-				'total': t,
-				'hours': hours,
-				'minutes': minutes,
-			};
-
-		},
-		initTimer(end) {
-			const counter = setInterval(() => {
-				const t = this.timeRemaining(end);
-				this.nugCounter = t.minutes;
-				if (t.minutes <= 0) 
-					clearInterval(counter);
-
-			}, 3000);
-		},
-
-	},
+		}
+	}
 };
 </script><script id="footer-links-panel-template" type="text/x-template">
 	<div class="center_h">
 	<a @click="onChangelogClicked" class="clickme">{{ version }}</a> | 
-	<!-- <a href="https://shell-shockers.myshopify.com/collections/all" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_merchandise }}</a> |  -->
+	<a href="https://shell-shockers.myshopify.com/collections/all" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_merchandise }}</a> | 
 	<a href="https://www.bluewizard.com/privacypolicy" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_privacypolicy }}</a> | 
 	<a href="https://bluewizard.com/terms/" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_termsofservice }}</a> | 
 	<a href="https://www.bluewizard.com" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">&copy; 2020 {{ loc.footer_bluewizard }}</a>
@@ -4409,7 +3972,7 @@ var comp_home_screen = {
 		'chicken-panel': comp_chicken_panel,
 		'footer-links-panel': comp_footer_links_panel,
 		'social-panel': comp_social_panel,
-		// 'event-panel': comp_events,
+		'event-panel': comp_events,
 	},
 
 	data: function () {
@@ -4424,31 +3987,38 @@ var comp_home_screen = {
 		playSound (sound) {
 			vueApp.playSound(sound);
 		},
+
 		onEquipClicked: function () {
 			vueApp.switchToEquipUi();
 			vueApp.playSound('./sound/ui/ui_equip.mp3');
 		},
+
 		showSignIn: function () {
 			extern.showSignInDialog();
 			vueApp.$refs.firebaseSignInPopup.show();
 		},
+
 		onSignInClicked: function () {
 			this.showSignIn();
 		},
+
 		onSignOutClicked: function () {
 			extern.signOut();
 		},
+
 		onResendEmailClicked: function () {
 			extern.sendFirebaseVerificationEmail();
 
 			vueApp.showGenericPopup('verify_email_sent', 'verify_email_instr', 'ok');
 		},
+
 		onBigHouseAdClosed: function () {
 			console.log('big house ad closed event received');
 			this.ui.houseAds.big = null;
 			this.urlParamSet = this.urlParams ? true : null;
             vueApp.shellShockUrlParamaterEvents();
 		},
+
 		onPlayerNameChanged: function (newName) {
 			console.log('play name event handler');
 			vueApp.setPlayerName(newName);
@@ -4934,8 +4504,6 @@ var comp_equip_screen = {
 			} else {
 				extern.closeEquipInGame();
 				vueApp.switchToGameUi();
-				vueApp.showGameMenu();
-				vueApp.showRespawnDisplayAd();
 			}
 
 			vueApp.playSound('./sound/ui/ui_popupclose.mp3');
@@ -5004,6 +4572,7 @@ var comp_equip_screen = {
 			this.selectEquippedItemForType();
 			vueApp.playSound('./sound/ui/ui_toggletab.mp3');
 			vueApp.histPushState({game: this.ui.screens.equip}, 'Shellshockers equipment inventory', '?equip=inventory');
+			ga('send', 'event', this.googleAnalytics.cat.inventory, this.googleAnalytics.action.inventoryTabClick);
 		},
 
 		ownsTaggedItems: function (tag) {
@@ -5028,6 +4597,7 @@ var comp_equip_screen = {
 			vueApp.conditionalAnonWarningCall();
 			vueApp.playSound('./sound/ui/ui_toggletab.mp3');
 			vueApp.histPushState({game: this.ui.screens.equip}, 'Shellshockers equipment shop', '?equip=shop');
+			ga('send', 'event', this.googleAnalytics.cat.itemShop, this.googleAnalytics.action.shopClick);
 		},
 
 		showItemsAfterEquipModeSwitch: function () {
@@ -5053,13 +4623,6 @@ var comp_equip_screen = {
 			this.updateEquippedItems();
 			this.poseEquippedItems();
 			this.populateItemGridWithType(this.equip.selectedItemType);
-
-			if (extern.inGame && this.ui.showScreen !== this.ui.screens.equip) {
-				this.equip.showingWeaponType = ItemType.Primary;
-				this.poseEquippedItems();
-				extern.closeEquipInGame();
-			}
-
 		},
 
 		autoSelectItem: function (item) {
@@ -5073,6 +4636,8 @@ var comp_equip_screen = {
 		},
 
 		onItemSelected: function (item) {
+			let isItemInShop = this.isInShop ? this.googleAnalytics.action.shopItemClick : this.googleAnalytics.action.inventorySelected;
+			ga('send', 'event', this.googleAnalytics.cat.inventory, isItemInShop, item.name);
 			this.selectItem(item);
 		},
 
@@ -5172,6 +4737,7 @@ var comp_equip_screen = {
 			// If item is buying item show buyItemPopup or show physicalUnlockPopup
 			this.equip.buyingItem ? this.$refs.buyItemPopup.toggle() : this.$refs.physicalUnlockPopup.toggle();
 			this.equip.buyingItem ? extern.renderItemToCanvas(this.equip.buyingItem, this.$refs.buyItemCanvas) : null;
+			hasValue(this.equip.buyingItem) && ga('send', 'event', this.googleAnalytics.cat.itemShop, this.googleAnalytics.action.shopItemPopupClick, this.equip.buyingItem.name);
 			vueApp.playSound('./sound/ui/ui_popupopen.mp3');
 		},
 
@@ -5208,6 +4774,10 @@ var comp_equip_screen = {
 			this.$refs.redeemCodePopup.code = '';
 			this.$refs.redeemCodePopup.toggle();
 			vueApp.playSound('./sound/ui/ui_popupopen.mp3');
+			ga('send', 'event', {
+				eventCategory: this.googleAnalytics.cat.redeem,
+				eventAction: this.googleAnalytics.action.redeemClick
+			});
 		},
 
 		onRedeemCodeConfirm: function () {
@@ -5265,7 +4835,7 @@ var comp_equip_screen = {
 };
 </script><script id="game-screen-template" type="text/x-template">
     <div>
-        <!-- <event-panel :show-soon="false" :show-ui="ui.showCornerButtons"></event-panel> -->
+        <event-panel :show-soon="false" :show-ui="ui.showCornerButtons"></event-panel>
         <account-panel id="game_account_panel" ref="accountPanel" :loc="loc" :eggs="eggs" :show-bottom="false" :show-corner-buttons="ui.showCornerButtons" :ui="ui"></account-panel>
 
         <div id="chickenBadge" ref="chickenBadge" style="display: none;"><img src="img/ico_chickenBadge.png"></div>
@@ -5454,11 +5024,18 @@ var comp_equip_screen = {
         <div class="player__container">
             <!-- Player List -->
                 <div id="playerSlot" class="playerSlot" style="display: none">
-                    <div>
+                    <div style="
+                        display: table-cell;
+                        border-radius: 0.2em;
+                        padding-top: 0.05em; padding-bottom: 0.05em;
+                        padding-left: 0.5em; padding-right: 0.5em;
+                        overflow-y: hidden;
+                        font-weight: bold;
+                    ">
                         <span></span> <!-- Name -->
-                        <span></span> <!-- Score -->
+                        <span style="padding-left: 1em"></span> <!-- Score -->
                     </div>
-                    <div style="display: block;"></div> <!-- Icons -->
+                    <div style="display: table-cell;"></div> <!-- Icons -->
                 </div>
                 <div id="playerList"></div>
             </div>
@@ -5470,55 +5047,42 @@ var comp_equip_screen = {
                 <!-- Popup: Pause -->
                 <large-popup id="pausePopup" ref="pausePopup" hide-close="true" :overlay-close="false" :overlay-class="ui.overlayClass.inGame">
                     <template slot="content">
-                        <div class="box_blue2 roundme_sm fullwidth">
-                            <div id="pausePopupInnards" class="roundme_sm fullwidth f_row">
-
-                                <div id="pauseButtons" class="pauseButtons">
-                                    <button @click="onHomeClicked" class="ss_button btn_blue bevel_blue"><i class="fa fa-home"></i> {{ loc.p_pause_home }}</button>
-                                    <button @click="onEquipClicked()" class="ss_button btn_blue bevel_blue"><i class="fas fa-star"></i> {{ loc.p_pause_equipment }}</button>
-                                    <button v-if="!delayTheCracking && !isRespawning" class="ss_button btn_red bevel_red btn_sm" disabled="disabled"><i class="fas fa-eye"></i> {{ loc.ui_game_get_ready }}</button>
-                                    <button v-if="delayTheCracking" v-show="!isRespawning" @click="onSpectateClicked()" class="ss_button btn_blue bevel_blue btn_sm" :disabled="isRespawning"><i class="fas fa-eye"></i> {{ loc.p_pause_spectate }}</button>
-
-                                </div>
-                                <!-- #pauseButtons -->
-                                <div id="popupTipDay" class="roundme_sm flex-auto">
-                                    <div v-if="isPoki && pokiRewardReady" class="poki-reward-container">
-                                        <button class="ss_button btn_blue bevel_blue btn_reward pure-wiggle" @click="earnInGameReward"><img src="img/ico_goldenEgg.png" class="egg_icon">Watch Video for 100 Golden Eggs!</button>
-                                    </div>
-                                    <!-- .poki-reward-container -->
-                                    <div id="btn_horizontal" class="pause-popup--btn-group">
-                                        <header class="weapon-select weapon-select--title pause-bg roundme_sm">
-                                            <h1>{{loc.p_weapon_title}}</h1>
-                                        </header>
-                                        <div class="pause-bg roundme_sm">
-                                            <weapon-select-panel ref="weaponSelect" id="weapon_select" :loc="loc" :current-class="classIdx" @changed-class="pauseWeaponSelect"></weapon-select-panel>
-                                        </div>
-                                        <!-- .pause-bg -->
-                                    </div>
-                                    <!-- .pause-popup--btn-group -->
-                                </div>
-                                <!-- #popupTipDay -->
+                        <div id="pausePopupInnards" class="box_blue2 roundme_sm fullwidth f_row">
+                            
+                            <div id="pauseButtons">
+                                <button @click="onHomeClicked" class="ss_button btn_blue bevel_blue"><i class="fa fa-home"></i> {{ loc.p_pause_home }}</button>
+                                <button @click="onEquipClicked()" class="ss_button btn_blue bevel_blue"><i class="fas fa-star"></i> {{ loc.p_pause_equipment }}</button>
+                                <!-- Don't have leaderboards yet <button class="ss_button btn_blue bevel_blue"><i class="fa fa-trophy"></i> {{ loc.p_pause_leaderboards }}</button> -->
+                                <!-- <button class="ss_button btn_blue bevel_blue"><i class="fa fa-shopping-cart"></i> {{ loc.p_pause_shop }}</button> -->
+                                <button @click="onHelpClicked" class="ss_button btn_blue bevel_blue"><i class="fa fa-question"></i> {{ loc.p_pause_help }}</button>
+                                <button @click="onShareLinkClicked" class="ss_button btn_blue bevel_blue"><i class="fa fa-link"></i> {{ loc.p_pause_sharelink }}</button>
+                                
+                                <button @click="onSettingsClicked" class="ss_button btn_blue bevel_blue"><i class="fa fa-cog"></i> {{ loc.p_pause_settings }}</button>
                             </div>
-                            <!-- #pausePopupInnards -->
-                            <div id="game-play-switch" class="roundme_sm fullwidth f_row">
-                                <div class="pauseButtons">
+                            
+                            <div id="popupTipDay" class="popupTipDay roundme_sm">
+                                <h3 v-if="!isPoki || !pokiRewardReady && isPoki"><i class="fa fa-lightbulb fa-lg"></i> {{ loc.p_pause_tipoftheday }}</h3>
+                                <p v-if="!isPoki || !pokiRewardReady && isPoki">{{ (loc.tip_ofthe_day ? loc.tip_ofthe_day[game.tipIdx] : '') }}</p>
+                                <div v-if="isPoki && pokiRewardReady" class="poki-reward-container">
+                                    <button class="ss_button btn_blue bevel_blue btn_reward pure-wiggle" @click="earnInGameReward"><img src="img/ico_goldenEgg.png" class="egg_icon">Watch Video for 100 Golden Eggs!</button>
+                                </div>
+                                <div id="btn_horizontal" class="pause-popup--btn-group">
                                     <div v-if="delayTheCracking" class="btn-container switch-teams-btn">
-                                        <button v-show="isTeamGame" @click="onSwitchTeamClicked" class="ss_button btn__team_switch" :class="teamColorCss"><i class="fa fa-flag"></i> {{ teamName }}</button>
+                                        <button v-show="isTeamGame" @click="onSwitchTeamClicked" class="ss_button btn__team_switch" :class="teamColorCss">{{ teamName }} <i class="fa fa-flag"></i></button>
                                     </div>
-                                    <!-- .switch-teams-btn -->
-                                </div>
-                                <!-- .pauseButtons -->
-                                <div class="w-shrinkauto roundme_sm">
-                                    <div class="pause-popup--btn-group">
-                                        <button v-if="!delayTheCracking && !isRespawning" class="btn_big btn_wfull ss_button btn_red bevel_red" disabled="disabled">{{ loc.ui_game_get_ready }}</button>
-                                        <button v-if="delayTheCracking" class="btn_big btn_wfull ss_button btn_red bevel_red" v-show="isRespawning" :disabled="isRespawning">{{ game.respawnTime }}</button>
-                                        <button v-if="delayTheCracking" v-show="!isRespawning" @click="onPlayClicked()" class="btn-respawn btn_big btn_wfull ss_button btn_yolk bevel_yolk" :disabled="isRespawning"><i class="fa fa-play"></i> {{ loc.p_pause_play }}</span></button>
+                                    <div class="btn-container play-btns">
+                                        <button v-if="delayTheCracking" @click="onSpectateClicked()" class="ss_button btn_blue bevel_blue btn_sm" v-show="!isRespawning"><i class="fas fa-eye"></i> {{ loc.p_pause_spectate }}</button>
+                                        <button v-if="delayTheCracking" @click="onPlayClicked()" class="ss_button btn_green bevel_green btn_sm" v-show="!isRespawning"><i class="fa fa-play"></i> {{ loc.p_pause_play }}</button>
+                                        <div v-if="!delayTheCracking && !isRespawning" class="game-start-loading-message">
+                                            <h3>{{loc.ui_game_get_ready}}</h3>
+                                        </div>
+                                        <!-- <button @click="onSpectateClicked()" class="ss_button btn_blue bevel_blue btn_sm" v-show="!isRespawning"><i class="fas fa-eye"></i> {{ loc.p_pause_spectate }}</button>
+                                        <button @click="onPlayClicked()" class="ss_button btn_green bevel_green btn_sm" v-show="!isRespawning"><i class="fa fa-play"></i> {{ loc.p_pause_play }}</button> -->
+                                        <button class="fullwidth btn__respawning" v-show="isRespawning">{{ game.respawnTime }}</button>
                                     </div>
-                                    <!-- .pause-popup--btn-group -->
                                 </div>
-                                <!-- .w-shrinkauto -->
                             </div>
-                            <!-- #game-play-switch -->
+                            
                         </div>
                     </template>
                 </large-popup>
@@ -5535,21 +5099,23 @@ var comp_equip_screen = {
 	</div>
 </script>
 
-
 <script>
 var comp_game_screen = {
     template: '#game-screen-template',
     components: {
         'account-panel': comp_account_panel,
-        // 'event-panel': comp_events,
-		'weapon-select-panel': comp_weapon_select_panel,
+        'event-panel': comp_events,
     },
 	data: function () {
 		return vueData;
     },
     created: function () {
+        // window.addEventListener('resize', this.resizeBannerAdTagForGame);
         this.isPoki = ! extern.pokiInitialized() ? extern.pokiInitialized() : extern.isPokiSDK();
         this.displayAdFunction = typeof(loadAscAdDisplay) === 'function' ? loadAscAdDisplay : Function;
+    },
+    destroyed: function () {
+        // window.removeEventListener('resize', this.resizeBannerAdTagForGame);
     },
     methods: {
         placeBannerAdTagForGame: function (tagEl) {
@@ -5557,16 +5123,14 @@ var comp_game_screen = {
         },        
 
         showGameMenu: function () {
-            // this.game.tipIdx = this.loc.tip_ofthe_day
-            // ? Math.randomInt(0, this.loc.tip_ofthe_day.length)
-            // : 0;
+            this.game.tipIdx = this.loc.tip_ofthe_day
+                ? Math.randomInt(0, this.loc.tip_ofthe_day.length)
+                : 0;
             this.game.gameType = extern.gameType;
             this.$refs.pausePopup.show();
-            setTimeout(() => vueApp.disableRespawnButton(false), 500);
             vueData.ui.showCornerButtons = true;
 			vueApp.gameUiAddClassForNoScroll();
-
-            addEventListener('gamepadbuttondown', this.onControllerButton);
+			extern.setVolume();
         },
 
         delayGameMenuPlayButtons() {
@@ -5579,8 +5143,6 @@ var comp_game_screen = {
             this.$refs.pausePopup.hide();
             this.$refs.respawnDisplayAd.hide();
             vueApp.gameUiAddClassForNoScroll();
-
-            removeEventListener('gamepadbuttondown', this.onControllerButton);
         },
 
         onHomeClicked: function () {
@@ -5600,7 +5162,6 @@ var comp_game_screen = {
 
         leaveGame: function () {
             // clientGame.js manipulates chickenBadge element directly to hide/show it
-            vueApp.disablePlayButton(false);
             this.$refs.chickenBadge.style.display = 'none';
             vueApp.showSpinner();
             document.body.style.overflow = 'visible';
@@ -5655,6 +5216,9 @@ var comp_game_screen = {
 
         onShareLinkClosed: function () {
             this.showGameMenu();
+            // setTimeout(() => {
+            //     vueApp.showRespawnDisplayAd();
+            // }, 1000);
         },
 
         onEquipClicked: function () {
@@ -5676,34 +5240,11 @@ var comp_game_screen = {
 
         onSwitchTeamConfirm: function () {
             extern.switchTeam();
-        },
-
-        onControllerButton: function (e) {
-            switch (e.detail) {
-                case '9':
-                    if (document.hasFocus() && !this.isRespawning && this.delayTheCracking) {
-                        this.onPlayClicked();
-                    }
-                    break;
-
-                case '4':
-                case '6':
-                case '14':
-                    vueData.classIdx = Math.max(0, vueData.classIdx - 1);
-                    this.$refs.weaponSelect.selectClass(vueData.classIdx);
-                    break;
-
-                case '5':
-                case '7':
-                case '15':
-                    vueData.classIdx = Math.min(5, vueData.classIdx + 1);
-                    this.$refs.weaponSelect.selectClass(vueData.classIdx);
-                    break;
-            }
+            this.showGameMenu();
         },
 
         onPlayClicked: function () {
-            vueApp.disableRespawnButton(true);
+            this.hideGameMenu();
             vueData.ui.showCornerButtons = false;
             extern.respawn();
             vueApp.playSound('./sound/ui/ui_playconfirm.mp3');
@@ -5713,7 +5254,6 @@ var comp_game_screen = {
             this.hideGameMenu();
             vueData.ui.showCornerButtons = false;
             extern.enterSpectatorMode();
-            vueApp.hideRespawnDisplayAd();
             vueApp.playSound('./sound/ui/ui_playconfirm.mp3');
         },
 
@@ -5741,36 +5281,45 @@ var comp_game_screen = {
             const rect = document.getElementById('pausePopup').getBoundingClientRect();
 
             pauseAdPlacement.style.top = (rect.height).toString() + 'px';
+
+            // if (rect.width < 970) {
+            //     pauseAdPlacement.style.transform = ' scale(' + (rect.width / 970) + ') translateX(-50%)';
+            // } else {
+            //     pauseAdPlacement.style.transform = ' scale(1) translateX(-50%)';
+            // }
+
         },
         earnInGameReward() {
             this.hideGameMenu();
             vueApp.setDarkOverlay(true);
             this.pokiRewardReady = false;
-             this.isPokiNewRewardTimer = false;
+            this.isPokiNewRewardTimer = false;
             extern.api_inGameReward(this.inGameRewardSuccessCallback, this.inGameRewardFailedCallback, this.rewardReachedDailyLimits);
             extern.setVolume(0);
         },
+
         inGameRewardSuccessCallback() {
             extern.pokiRewardedBreak(this.inGameRewardIsGranted, this.inGameRewardFailedCallback);
+            extern.setVolume(0);
         },
+        
         inGameRewardIsGranted(rewardValue) {
             console.log('inGameRewardSuccessCallback');
             this.isPokiNewRewardTimer = true;
+            extern.setVolume();
             vueApp.showGiveStuffPopup('reward_title', rewardValue, '');
-            ga('send', 'event', 'Poki', 'Rewarded Video', 'Reward Success', this.pokiRewNum);
-            this.pokiRewNum ++;
         },
+        
         inGameRewardFailedCallback() {
             vueApp.showGenericPopup('p_redeem_error_title', 'in_game_reward_try_again', 'ok');
             this.isPokiNewRewardTimer = false;
-            ga('send', 'event', 'Poki', 'Rewarded Video', 'Failed');
+            extern.setVolume();
         },
         rewardReachedDailyLimits() {
             vueApp.showGenericPopup('in_game_reward_title', 'in_game_reward_try_again', 'ok');
             this.isPokiNewRewardTimer = false;
             localStorage.setItem('inGameRewardLimitDate',  Date.now());
             extern.setVolume();
-            ga('send', 'event', 'Poki', 'Rewarded Video', 'Reached Daily Limit');
         },
 
         pokiTimers(value, milliseconds) {
@@ -5781,11 +5330,8 @@ var comp_game_screen = {
                 console.log('cancelTimer');
                 return;
             }
-            pokiSetTimer = setTimeout(() => this.pokiRewardReady = true, milliseconds);
-        },
 
-        pauseWeaponSelect() {
-            vueApp.$refs.equipScreen.onChangedClass();
+            pokiSetTimer = setTimeout(() => this.pokiRewardReady = true, milliseconds);
         },
     },
 
@@ -5823,11 +5369,9 @@ var comp_game_screen = {
     watch: {
         isPokiGameLoad(value) {
             this.pokiTimers(value, this.videoRewardTimers.initial);
-            // this.pokiTimers(value, 300);
         },
         isPokiNewRewardTimer(value) {
             this.pokiTimers(value, this.videoRewardTimers.primary);
-            // this.pokiTimers(value, 300);
         }
     }
 
@@ -5857,7 +5401,7 @@ function startVue(languageCode, locData) {
             'game-screen': comp_game_screen,
             'gold-chicken-popup': comp_gold_chicken_popup,
             'chicken-nugget-popup': comp_chicken_nugget_popup,
-            // 'event-panel': comp_events,
+            'event-panel': comp_events,
         },
 
         data: vueData,
@@ -5892,7 +5436,6 @@ function startVue(languageCode, locData) {
                 console.log('created -> fully rendered time (ms): ' + (fullyRenderedTime - createdTime));
 
                 this.ready = true;
-                // vueApp.getNuggetTimer();
                 
                 this.showSpinner('ui_game_loading', 'ui_game_waitforit');
                 this.histPushState({game: this.ui.screens.home}, 'Shellshockers home', '?home');
@@ -6143,6 +5686,8 @@ function startVue(languageCode, locData) {
             switchToGameUi: function (isGameOwner) {
                 this.ui.showScreen = this.ui.screens.game;
                 this.game.isGameOwner = isGameOwner;
+                vueApp.hideTitleScreenAd();
+                this.showGameMenu();
             },
 
             gameUiAddClassForNoScroll() {
@@ -6151,6 +5696,7 @@ function startVue(languageCode, locData) {
             },
 
             gameUiRemoveClassForNoScroll() {
+                console.log('gameUiRemoveClassForNoScroll');
                 let html = document.getElementsByTagName("html")[0];
                 html.classList.remove('noScrollIngame');
             },
@@ -6182,11 +5728,9 @@ function startVue(languageCode, locData) {
                 this.equip.colorIdx = colorIdx;
             },
 
-            setAccountUpgraded: function (upgraded, endDate) {
+            setAccountUpgraded: function (upgraded) {
                 this.isUpgraded = upgraded;
                 this.equip.extraColorsLocked = !this.isUpgraded;
-                this.nugStart = endDate;
-                // vueApp.getNuggetTimer();
             },
 
             setDarkOverlay: function (visible, overlayClass) {
@@ -6230,13 +5774,10 @@ function startVue(languageCode, locData) {
 
             denyAnonUser: function () {
                 ga('send', 'event', vueApp.googleAnalytics.cat.playerStats, vueApp.googleAnalytics.action.denyAnonUserPopup);
-                if (extern.inGame) {
-                    this.hideGameMenu();
-                }
                 this.$refs.noAnonPopup.show();
             },
 
-            showGdprNotification: function () {
+            showGdrpNotification: function () {
                 this.$refs.gdpr.show();
             },
 
@@ -6287,7 +5828,8 @@ function startVue(languageCode, locData) {
             showNuggetPopup: function () {
                 this.$refs.nuggetPopup.show();
                 this.$refs.chickenNugget.loadMiniGame();
-                this.isBuyNugget = true;
+                // Commenting it out because this only needs to be called once...
+                // this.placeBannerAdTagForNugget(this.$options.multisizeAdTag);
                 console.log('showNuggetPopup()');
             },
 
@@ -6303,10 +5845,6 @@ function startVue(languageCode, locData) {
                 this.playSound('./sound/ui/ui_playconfirm.mp3');
             },
 
-            getNuggetTimer() {
-            return;
-                this.$refs.homeScreen.$refs.chickenPanel.setupNuggetTimer();
-            },
             onMiniGameCompleted: function () {
                 this.$refs.chickenNugget.onMiniGameCompleted();
             },
@@ -6523,7 +6061,7 @@ function startVue(languageCode, locData) {
                 this.$refs.spinnerOverlay.$refs.loadingScreenDisplayAd.show();
                 this.histPushState({game: 3}, 'Shellshockers Loading display ad', '?loadingAd=true');
             },
-            displayAdEventObject(event) {
+            disaplyAdEventObject(event) {
                 let object = event;
                 this.displayAdObject = object.size[0];
             },
@@ -6555,19 +6093,6 @@ function startVue(languageCode, locData) {
             },
             histPushState(obj, title, param) {
                 return history.pushState(obj, title, param);
-            },
-            disablePlayButton(val) {
-			    return document.querySelector('.play-button').disabled = val;
-            },
-            disableRespawnButton(val) {
-			    return document.querySelector('.btn-respawn') ? document.querySelector('.btn-respawn').disabled = val : '';
-            },
-            disaplyAdEventObject(event) {
-                let object = event;
-                this.displayAdObject = object.size[0];
-            },
-            adBlockerPopupToggle() {
-               return vueApp.$refs.adBlockerPopup.toggle();
             }
         },
 
@@ -6576,14 +6101,14 @@ function startVue(languageCode, locData) {
                 return {
                     'playing-poki': this.isPoki
                 }
-            },
-        },
-        watch: {
-            isPaused(val) {
-                if (!val) 
-                    return this.hideRespawnDisplayAd();
             }
-        }
+        },
+        // watched: {
+        //     doubleEggWeekend(val) {
+        //         console.log('doubleEggWeekend', val);
+        //         return this.isEvent = val;
+        //     }
+        // }
     });
 }
 </script>

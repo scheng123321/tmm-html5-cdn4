@@ -21,7 +21,7 @@
             [[160, 600]],
         ];
     </script>
-    <script type="text/javascript" id="factorem" src="//cdm.cursecdn.com/js/zombsroyale/cdmfactorem_min.js?sec=home&misc=1580049193"></script>
+    <!--<script type="text/javascript" id="factorem" src="//cdm.cursecdn.com/js/zombsroyale/cdmfactorem_min.js?sec=home&misc=1580049193"></script>-->
     <script>
         window.ga = function(){};
         (function() {
@@ -47,10 +47,10 @@
             }
             return window.realFetch(...args);
         };
-        (async function(){
-            const dbs = await window.indexedDB.databases();
-            dbs.forEach(db => window.indexedDB.deleteDatabase(db.name));
-        })();
+        // (async function(){
+        //     const dbs = await window.indexedDB.databases();
+        //     dbs.forEach(db => window.indexedDB.deleteDatabase(db.name));
+        // })();
         window.rWS = window.WebSocket;
         WebSocket = function(url){
             var split = url.split('://');
@@ -128,15 +128,18 @@
     <script src="asset/app.js"></script>
     <script src="asset/build/UnityLoader.js"></script>
     <script>
-        var game = new Game({
-            stage: 'prod',
-            endpoint: 'zombsroyale',
-            userData: false,
-            buildJsonUrl: 'build/webgl.json',
-        });
-
-        game.init(function() {
-            console.log('Ready to launch!');
+        fetch('https://onebigstatic-tmm.tbt.mx/static/https://zombsroyale.io/build/webgl?rand='+Date.now()).then(async response=>{
+            var jsonBlob = new Blob([(await response.text()).replace(/:"\\\//g, ':"https://onebigstatic-tmm.tbt.mx/static/https://zombsroyale.io/')], {type: 'application/json'});
+            var game = new Game({
+                stage: 'prod',
+                endpoint: 'zombsroyale',
+                userData: false,
+                buildJsonUrl: window.URL.createObjectURL(jsonBlob),
+            });
+    
+            game.init(function() {
+                console.log('Ready to launch!');
+            });
         });
     </script>
     <div id="cdm-zone-end"></div>
