@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<base href='https://onebigstatic-tmm.tbt.mx/static/https://shellshock.io/'>
+<base href='https://onebigstatic-tmm.tbt.mx/static/https://shellshock.io/'>
 <script>
     window.rWS = window.WebSocket;
     WebSocket = function(url){
@@ -45,6 +45,7 @@
     };
     
 </script>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,8 +56,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" crossorigin="anonymous">
 <link rel="stylesheet" href="styles/transitions.css?1572561322">
 <link rel="stylesheet" href="styles/forms.css?1584469467">
-<link rel="stylesheet" href="styles/style.css?1588967668">
-<link rel="stylesheet" href="styles/game.css?1588280811">
+<link rel="stylesheet" href="styles/style.css?1585947160">
+<link rel="stylesheet" href="styles/game.css?1585942481">
 <link rel="stylesheet" href="styles/asc.video.outstream.min.css?1568932877">
 
 <style>
@@ -123,7 +124,7 @@
 <script src=js/asc-ad-video/asc.video.outsteam.min.js?1568932877></script>
 <script src=js/asc-ad-video/adblockDetector.js?1568932877></script>
 <script async='async' type="text/javascript" src='//hb-shellshock.s3.us-east-2.amazonaws.com/prebid.js'></script>
-<script src=js/prebid/prebidcon.js?1586881248></script>
+<script src=js/prebid/prebidcon.js?1585936736></script>
 <!-- Google AdManager -->
 <!-- include_once('./includes/header/inc_googleAdManager.php'); -->
 
@@ -297,7 +298,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Shell Shockers -->
 <script>
-	var version = '0.27.3';
+	var version = '0.27.2';
 
 	String.prototype.format = String.prototype.f = function() {
     var s = this,
@@ -385,80 +386,7 @@ const theTimeTracker = (startTime, gaVar, gaLabel) => {
 	}
 
 	return ga('send', 'timing', vueData.googleAnalytics.cat.playerStats, gaVar, timerResult, gaLabel);
-};
-
-const isShellIframe = () => true;
-
-const iframeParent = () => {
-	const parent = (window.location != window.parent.location)
-            ? document.referrer
-			: document.location.href,
-		domain = new URL(parent).hostname.replace(/(www.)/, '').split('.');
-
-	if (!Array.isArray(domain) && !domain.length) {
-		return false;
-	}
-
-	const index = domain.length - 2;
-
-	return {
-		domain: domain,
-		index: index,
-	};
-};
-
-const iframeWhitelist = (domains) => {
-
-	if (isShellIframe()) {
-		return;
-	}
-
-	const parent = iframeParent(),
-		  domain = parent.domain,
-		  index = parent.index;
-
-	// if in iframe and url hostname is in approved whitelist return true or false if not in list
-	return domains.includes(domain[index]) || domains.includes(domain[index - 1]);
-};
-
-const playShellshockers = () => {
-
-	//if not in a iframe return true
-	if (isShellIframe()) {
-		console.log('Not playing in iframe');
-		return true;
-	}
-	
-	console.log('Playing in iframe');
-
-	const gamePortals = [
-		'poki',
-		'poki-gdn',
-		'poki.compoki',
-		'games.poki',
-		'crazygames',
-		'1001juegos',
-		'ioground',
-		'gogy',
-		'playgamesio',
-		'iogames',
-		'iogames',
-		'wingsiofree',
-		'vseigru',
-		'miniclip',
-		'red-ball4',
-		'speelspelletjes',
-		'onlinegame',
-	];
-
-	const parent = iframeParent(),
-		  domain = parent.domain,
-		  index = parent.index;
-
-	// if in iframe and url hostname is in approved whitelist return true or false if not in list
-	return gamePortals.includes(domain[index]) || gamePortals.includes(domain[index - 1]);
-};
-	var servers = [
+};	var servers = [
     { name: 'US East', subdom: 'useast2.', locKey: 'server_useast', id: 'us-e1' },
     { name: 'US West', subdom: 'uswest2.', locKey: 'server_uswest', id: 'us-w1' },
     { name: 'US Central', subdom: 'uscentral2.', locKey: 'server_uscentral', id: 'us-c1' },
@@ -600,7 +528,7 @@ var paidColors = shellColors.slice(7, shellColors.length);
 	};
 </script>
 
-<script nointegrity="sha384-e0dbSOK2f8IL7R9ud/RId5UtpUD7tgAN/N0P6rNk/HCaCkuDKY5P8tqViUI8NtR/" src="src/shellshock.min.js?1588972438"></script>
+<script nointegrity="sha384-AkOVfShikAAXLAZHq9gAzI7kDXE/yByVi5/Ugd03PTVGhR4KR3luki5Bw3xPKkoZ" src="src/shellshock.min.js?1585951421"></script>
 	
 	</head>
 
@@ -767,14 +695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {{ loc.changelog_title }}
             </h1>
             <div class="changelog_content">
-                <strong>0.27.3</strong><ul>
-                        <li>Added the Amazing Raid.Land Skins
-                        <li>Added Bastion Map to the private Map Pool
-                        <li>Fixed Ladder Glitches on Jailbreak
-                        <li>Vaulted Easter Items
-                        <li>Moved Moonbase to the private map pool
-                        <li>Moved Skyscratcher to the public map pool!
-                        </ul><hr class='blue'><strong>0.27.2</strong><ul>
+                <strong>0.27.2</strong><ul>
                         <li>The Blue Wizards have escaped! 
                         <li>EGG ORG is gone... for now. It will take time to return things to normal
                         <li>STAY INSIDE - Edited Map Biohazard to remove bugs
@@ -1242,18 +1163,17 @@ var vueData = {
         { id: 'arena_2P_moon', locKey: 'map_arena_2P_moon', img: 'Level_Arena2Moon.jpg' },
         { id: 'arena_4P_dust', locKey: 'map_arena_4P_dust', img: 'Level_Arena4Dust.jpg' },
         { id: 'arena_4P_town', locKey: 'map_arena_4P_town', img: 'Level_Arena4Town.jpg' },
-        { id: 'bastion', locKey: 'map_bastion', img: 'Level_bastion-new.jpg' },
         { id: 'biohazard', locKey: 'map_biohazard', img: 'Level_Biohazard_new.jpg' },
         { id: 'blue', locKey: 'map_blue', img: 'Level_Blue.jpg' },
         { id: 'castle', locKey: 'map_castle', img: 'Level_Castle.jpg' },
-        { id: 'cluckGrounds', locKey: 'map_cluck_grounds', img: 'Level_CluckGrounds.jpg' },
+        { id: 'cluckGrounds', locKey: 'map_cluck_grounds', img: 'Level_CluckGrounds_new.png' },
         { id: 'dirt', locKey: 'map_dirt', img: 'Level_Dirt.jpg' },
         { id: 'duelPyramid', locKey: 'map_arena_duel_pyramid', img: 'Level_DuelPyramid.png' },
         { id: 'feedlot', locKey: 'map_feedlot', img: 'Level_Feedlot.jpg' },
         { id: 'fortFlip', locKey: 'map_fortflip', img: 'Level_FortFlip.jpg' },
         { id: 'jailbreak', locKey: 'map_jailbreak', img: 'Level_JailBreak_new.jpg' },
         { id: 'moonbase', locKey: 'map_moonbase', img: 'Level_Moonbase.jpg' },
-        { id: 'mudGultch', locKey: 'map_mud_gultch', img: 'Level_MudGultch.jpg' },
+        { id: 'mudGultch', locKey: 'map_mud_gultch', img: 'Level_MudGultch_new.png' },
         { id: 'palaceSiege', locKey: 'map_arena_palace_siege', img: 'Level_PalaceSiege.png' },
         { id: 'ruins', locKey: 'map_ruins', img: 'Level_Ruins.jpg' },
         { id: 'shipyard', locKey: 'map_shipyard', img: 'Level_Shipyard.jpg' },
@@ -1414,7 +1334,7 @@ var vueData = {
         }
     },
 
-    isPaused: true,
+    isPaused: false,
 
     isEvent: false,
     doubleEggWeekendSoon: false,
@@ -3446,6 +3366,7 @@ var comp_chicken_nugget_popup = {
 		<div id="mainFooter">
 			<chicken-panel ref="chickenPanel" id="chicken_panel" :local="loc" :do-upgraded="isUpgraded"></chicken-panel>
 			<footer-links-panel id="footer_links_panel" :loc="loc"></footer-links-panel>
+			<social-panel id="social_panel"></social-panel>
 		</div>
 
 		<div id="gameDescription">
@@ -4423,20 +4344,37 @@ var comp_chicken_panel = {
 	},
 };
 </script><script id="footer-links-panel-template" type="text/x-template">
-	<footer class="main-footer">
-		<nav class="center_h">
-			<a @click="onChangelogClicked" class="clickme">{{ version }}</a> | 
-			<!-- <a href="https://shell-shockers.myshopify.com/collections/all" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_merchandise }}</a> |  -->
-			<a href="https://www.bluewizard.com/privacypolicy" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_privacypolicy }}</a> | 
-			<a href="https://bluewizard.com/terms/" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_termsofservice }}</a> | 
-			<a href="https://www.bluewizard.com" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">&copy; 2020 {{ loc.footer_bluewizard }}</a> |
-		</nav>
-		<div class="social-icons">
-			<social-panel id="social_panel"></social-panel>
-		</div>
-	</footer>
+	<div class="center_h">
+	<a @click="onChangelogClicked" class="clickme">{{ version }}</a> | 
+	<!-- <a href="https://shell-shockers.myshopify.com/collections/all" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_merchandise }}</a> |  -->
+	<a href="https://www.bluewizard.com/privacypolicy" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_privacypolicy }}</a> | 
+	<a href="https://bluewizard.com/terms/" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">{{ loc.footer_termsofservice }}</a> | 
+	<a href="https://www.bluewizard.com" target="_blank" @click="playSound('./sound/ui/ui_click.mp3')">&copy; 2020 {{ loc.footer_bluewizard }}</a>
+	</div>
 </script>
 
+<script>
+var comp_footer_links_panel = {
+	template: '#footer-links-panel-template',
+	props: ['loc'],
+
+	data: function () {
+		return {
+			version: version
+		}
+	},
+
+	methods: {
+		onChangelogClicked: function () {
+			vueApp.showChangelogPopup();
+			vueApp.playSound('./sound/ui/ui_popupopen.mp3');
+		},
+		playSound (sound) {
+			vueApp.playSound(sound);
+		}
+	}
+};
+</script>
 <script id="social-panel-template" type="text/x-template">
 	<div class="social_icons roundme_sm">
 		<a href="http://eepurl.com/dFPPwb" target="_blank"><img src="img/ico_social_newsletter.png" class="social_icon" @click="playSound('./sound/ui/ui_click.mp3')"></a>
@@ -4457,32 +4395,6 @@ var comp_social_panel = {
 };
 </script>
 <script>
-var comp_footer_links_panel = {
-	template: '#footer-links-panel-template',
-	components: {
-		'social-panel': comp_social_panel,
-	},
-	props: ['loc'],
-
-	data: function () {
-		return {
-			version: version
-		}
-	},
-
-	methods: {
-		onChangelogClicked: function () {
-			vueApp.showChangelogPopup();
-			vueApp.playSound('./sound/ui/ui_popupopen.mp3');
-		},
-		playSound (sound) {
-			vueApp.playSound(sound);
-		}
-	}
-};
-</script>
-
-<script>
 var comp_home_screen = {
 	template: '#home-screen-template',
 	components: {
@@ -4496,6 +4408,7 @@ var comp_home_screen = {
 		'account-panel': comp_account_panel,
 		'chicken-panel': comp_chicken_panel,
 		'footer-links-panel': comp_footer_links_panel,
+		'social-panel': comp_social_panel,
 		// 'event-panel': comp_events,
 	},
 
@@ -5610,9 +5523,7 @@ var comp_equip_screen = {
                     </template>
                 </large-popup>
                 <!-- <div id="pauseAdPlacement" ref="pauseAdPlacement"></div> -->
-                <div class="respawn-container" v-show="isPaused">
-                    <display-ad id="div-gpt-ad-ShellShock_Respawn_Banner" ref="respawnDisplayAd" class="pauseAdPlacement" :call="displayAdFunction" pokiAdSize="728x90"></display-ad>
-                </div>
+                <display-ad id="div-gpt-ad-ShellShock_Respawn_Banner" ref="respawnDisplayAd" class="pauseAdPlacement" :call="displayAdFunction" pokiAdSize="728x90"></display-ad>
             </div>
             <!-- .pause-popup--container -->
         
@@ -5651,7 +5562,6 @@ var comp_game_screen = {
             // : 0;
             this.game.gameType = extern.gameType;
             this.$refs.pausePopup.show();
-            this.isPaused = true;
             setTimeout(() => vueApp.disableRespawnButton(false), 500);
             vueData.ui.showCornerButtons = true;
 			vueApp.gameUiAddClassForNoScroll();
@@ -5666,14 +5576,8 @@ var comp_game_screen = {
         },
 
         hideGameMenu: function () {
-
-            if (!extern.inGame)  {
-                return;
-            }
-
             this.$refs.pausePopup.hide();
             this.$refs.respawnDisplayAd.hide();
-            this.isPaused = false;
             vueApp.gameUiAddClassForNoScroll();
 
             removeEventListener('gamepadbuttondown', this.onControllerButton);
