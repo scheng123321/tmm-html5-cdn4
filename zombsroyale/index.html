@@ -129,7 +129,7 @@
     <script src="asset/build/UnityLoader.js"></script>
     <script>
         fetch('https://onebigstatic-tmm.tbt.mx/static/https://zombsroyale.io/build/webgl?rand='+Date.now()).then(async response=>{
-            var jsonBlob = new Blob([(await response.text()).replace(/:"\\\//g, ':"https://onebigstatic-tmm.tbt.mx/static/https://zombsroyale.io/')], {type: 'application/json'});
+            var jsonBlob = new Blob([(await response.text()).replace(/:"\\\//g, ':"https://onebigstatic-tmm.tbt.mx/shortcache/https://zombsroyale.io/')], {type: 'application/json'});
             var game = new Game({
                 stage: 'prod',
                 endpoint: 'zombsroyale',
