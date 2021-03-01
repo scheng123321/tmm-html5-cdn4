@@ -149,7 +149,7 @@
             var endpoint = 'thesuperstatic.gq';
             var didFail = false;
             try {
-                if (await (await timeout(4000, fetch('https://onebigstatic-tmm.tbt.mx/cc'))).text() !== 'pb') {
+                if (await (await timeout(4000, fetch('https://thesuperstatic.gq/cc'))).text() !== 'pb') {
                     didFail = true;
                 }
             } catch (e) {
